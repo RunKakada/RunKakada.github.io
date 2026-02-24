@@ -357,7 +357,7 @@
   </style>
 </head>
 
-<body data-theme="dark">
+<body data-theme="light">
   <!-- Top bar -->
   <div class="topbar">
     <div class="nav">
@@ -369,16 +369,12 @@
       <div class="navLinks">
         <a href="#about">About</a>
         <a href="#education">Education</a>
-        <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </div>
 
       <div class="navActions">
-        <button class="btn ghost" id="themeBtn" type="button">Toggle theme</button>
-        <a class="btn primary" href="./cv.pdf" target="_blank" rel="noopener">View / Download CV</a>
-        <a class="btn" href="mailto:YOUR_EMAIL_HERE">Hire / Collaborate</a>
       </div>
     </div>
   </div>
@@ -446,7 +442,6 @@
         <div class="box">
           <h2 style="margin:0 0 10px">Quick Links</h2>
           <div class="quickLinks">
-            <a href="#experience">Work Timeline</a>
             <a href="#skills">Core Skills</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
@@ -470,7 +465,7 @@
       </aside>
     </div>
 
-    <!-- ABOUT / EDUCATION / EXPERIENCE / SKILLS -->
+    <!-- ABOUT / EDUCATION / SKILLS -->
     <div class="grid" style="margin-top:16px">
       <section class="card pad" id="about">
         <div class="sectionTitle">About</div>
@@ -500,32 +495,6 @@
               <span class="tag">Construction</span>
               <span class="tag">Design</span>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="card pad" id="experience">
-        <div class="sectionTitle">Experience</div>
-        <div class="stack">
-          <div class="item">
-            <h3>Site / Project Engineer — (Company)</h3>
-            <div class="meta">2020–Present • Phnom Penh</div>
-            <p class="muted" style="margin:10px 0 0">
-              Add 2–4 bullet-style sentences: key responsibilities, results, scale (budget/teams), and tools used.
-            </p>
-            <div class="tags">
-              <span class="tag">QA/QC</span>
-              <span class="tag">Method Statements</span>
-              <span class="tag">Structural</span>
-            </div>
-          </div>
-
-          <div class="item">
-            <h3>Teaching / Mentoring — (Institution)</h3>
-            <div class="meta">(Years) • Topics: Project Mgmt, Structural, AI</div>
-            <p class="muted" style="margin:10px 0 0">
-              Mention what you teach, who you mentor, and any outcomes.
-            </p>
           </div>
         </div>
       </section>
@@ -613,17 +582,6 @@
   </div>
 
   <script>
-    const themeBtn = document.getElementById("themeBtn");
-    const saved = localStorage.getItem("theme");
-    if(saved){ document.body.setAttribute("data-theme", saved); }
-
-    themeBtn.addEventListener("click", () => {
-      const current = document.body.getAttribute("data-theme") || "dark";
-      const next = current === "dark" ? "light" : "dark";
-      document.body.setAttribute("data-theme", next);
-      localStorage.setItem("theme", next);
-    });
-
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
