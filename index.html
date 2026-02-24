@@ -3,274 +3,382 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Rath Runkakada — Civil Engineer | Structural Design | Construction Management | AI for Civil Engineering" />
   <title>Rath Runkakada | Civil Engineer</title>
+  <meta name="description" content="Personal portfolio of Rath Runkakada — Civil Engineer | Structural Design | Construction Management | AI for Civil Engineering" />
 
   <style>
     :root{
-      --bg1:#071225;
-      --bg2:#071b2a;
+      --bg0:#071524;
+      --bg1:#0b1f33;
       --card:rgba(255,255,255,.06);
       --card2:rgba(255,255,255,.08);
       --stroke:rgba(255,255,255,.12);
       --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.72);
-      --soft:rgba(255,255,255,.08);
+      --muted:rgba(255,255,255,.70);
+      --muted2:rgba(255,255,255,.55);
+      --shadow:0 18px 55px rgba(0,0,0,.45);
+      --shadow2:0 10px 28px rgba(0,0,0,.35);
+      --radius:18px;
+      --radius2:14px;
       --accent:#7dd3fc;
       --accent2:#a78bfa;
-      --good:#34d399;
-      --warn:#fbbf24;
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
-      --radius:18px;
-      --radius2:22px;
-      --max: 1100px;
+      --chip:rgba(255,255,255,.07);
+      --chipStroke:rgba(255,255,255,.10);
+      --max:1100px;
+    }
+
+    /* Light theme */
+    body[data-theme="light"]{
+      --bg0:#f6f8fb;
+      --bg1:#eaf0f7;
+      --card:rgba(10,20,40,.05);
+      --card2:rgba(10,20,40,.07);
+      --stroke:rgba(10,20,40,.12);
+      --text:rgba(10,20,40,.92);
+      --muted:rgba(10,20,40,.70);
+      --muted2:rgba(10,20,40,.55);
+      --shadow:0 18px 55px rgba(10,20,40,.14);
+      --shadow2:0 10px 28px rgba(10,20,40,.12);
+      --chip:rgba(10,20,40,.06);
+      --chipStroke:rgba(10,20,40,.10);
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
       background:
-        radial-gradient(1200px 700px at 20% 20%, rgba(125,211,252,.18), transparent 55%),
-        radial-gradient(900px 650px at 80% 35%, rgba(167,139,250,.16), transparent 55%),
-        radial-gradient(1000px 800px at 50% 120%, rgba(52,211,153,.10), transparent 50%),
-        linear-gradient(180deg, var(--bg1), var(--bg2));
-      overflow-x:hidden;
+        radial-gradient(1200px 700px at 15% 10%, rgba(125,211,252,.16), transparent 60%),
+        radial-gradient(1000px 650px at 85% 20%, rgba(167,139,250,.14), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      color:var(--text);
     }
 
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px 70px}
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:18px 16px 50px}
     .topbar{
-      position:sticky; top:0; z-index:50;
+      position:sticky; top:0; z-index:10;
       backdrop-filter: blur(10px);
-      background: linear-gradient(180deg, rgba(7,18,37,.82), rgba(7,18,37,.55));
+      background: linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,0));
       border-bottom:1px solid rgba(255,255,255,.06);
     }
-    .topbar-inner{
-      max-width:var(--max); margin:0 auto; padding:14px 18px;
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
+    body[data-theme="light"] .topbar{
+      background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,0));
+      border-bottom:1px solid rgba(10,20,40,.08);
+    }
+    .nav{
+      max-width:var(--max); margin:0 auto; padding:12px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .brandMark{
+      width:12px; height:12px; border-radius:6px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), rgba(255,255,255,.15));
+      box-shadow: 0 0 0 4px rgba(125,211,252,.10), 0 0 22px rgba(125,211,252,.22);
+    }
+    body[data-theme="light"] .brandMark{
+      box-shadow: 0 0 0 4px rgba(125,211,252,.18), 0 0 22px rgba(125,211,252,.18);
     }
 
-    .brand{display:flex; align-items:center; gap:10px; text-decoration:none}
-    .dot{
-      width:10px;height:10px;border-radius:50%;
-      background: radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,.2));
-      box-shadow: 0 0 0 4px rgba(125,211,252,.12), 0 0 25px rgba(125,211,252,.25);
-    }
-    .brand strong{font-weight:700; letter-spacing:.2px}
-    .nav{display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center}
-    .nav a{
-      text-decoration:none;
-      font-size:14px;
+    .navLinks{
+      display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:center;
       color:var(--muted);
+      font-size:14px;
+    }
+    .navLinks a{
       padding:8px 10px;
       border-radius:999px;
-      transition:.2s ease;
+      border:1px solid transparent;
     }
-    .nav a:hover{background:var(--soft); color:var(--text)}
-    .actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .navLinks a:hover{
+      border-color: var(--stroke);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+    }
+    body[data-theme="light"] .navLinks a:hover{
+      background: rgba(10,20,40,.04);
+    }
 
+    .navActions{display:flex; gap:10px; align-items:center}
     .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:10px 14px;
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
       border-radius:999px;
       border:1px solid var(--stroke);
-      background: rgba(255,255,255,.06);
+      background: rgba(255,255,255,.05);
+      box-shadow: var(--shadow2);
       color:var(--text);
-      text-decoration:none;
+      font-weight:600;
       font-size:14px;
-      transition:.2s ease;
-      box-shadow: 0 10px 25px rgba(0,0,0,.20);
       cursor:pointer;
-      user-select:none;
+      white-space:nowrap;
     }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09)}
+    .btn:hover{transform: translateY(-1px)}
+    .btn:active{transform: translateY(0)}
     .btn.primary{
       border-color: rgba(125,211,252,.35);
-      background: linear-gradient(135deg, rgba(125,211,252,.18), rgba(167,139,250,.14));
+      background: linear-gradient(180deg, rgba(125,211,252,.18), rgba(125,211,252,.10));
     }
-    .btn.ghost{background:transparent}
-    .btn.small{padding:8px 12px; font-size:13px}
+    .btn.ghost{
+      background: transparent;
+      box-shadow:none;
+    }
 
     .grid{
       display:grid;
-      grid-template-columns: 1.4fr .95fr;
-      gap:18px;
-      margin-top:18px;
+      grid-template-columns: 1.25fr .95fr;
+      gap:16px;
+      margin-top:16px;
     }
-    @media (max-width: 980px){
+    @media (max-width:980px){
       .grid{grid-template-columns:1fr}
-      .nav{display:none}
+      .nav{flex-wrap:wrap; justify-content:center}
+      .navActions{width:100%; justify-content:center}
     }
 
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.045));
-      border:1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius2);
+      background: linear-gradient(180deg, var(--card), var(--card2));
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow:hidden;
+      position:relative;
     }
-    .card-inner{padding:18px 18px}
+    .pad{padding:18px}
+
+    /* HERO */
     .hero{
       padding:22px;
-      display:flex; gap:18px; align-items:center;
+      position:relative;
+      min-height: 240px;
     }
-    .hero-left{flex:1}
-    .hero-title{
-      font-size:44px;
-      line-height:1.06;
+
+    /* Photo overlaps the card edge */
+    .profileWrap{
+      position:absolute;
+      top:18px;
+      left:18px;
+      transform: translateX(-14px); /* makes it overlap outside */
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+      z-index:2;
+    }
+
+    .profile{
+      width:122px;
+      height:122px;
+      border-radius: 14px;  /* square-ish corporate */
+      object-fit:cover;
+      border:1px solid rgba(255,255,255,.20);
+      box-shadow: 0 22px 60px rgba(0,0,0,.55);
+      background: rgba(255,255,255,.06);
+    }
+    body[data-theme="light"] .profile{
+      border:1px solid rgba(10,20,40,.18);
+      box-shadow: 0 18px 45px rgba(10,20,40,.18);
+    }
+
+    .profileName{
+      font-size:12px;
+      color: var(--muted2);
+      letter-spacing:.2px;
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.10);
+      padding:6px 10px;
+      border-radius:999px;
+      text-align:center;
+      max-width: 160px;
+    }
+    body[data-theme="light"] .profileName{
+      background: rgba(255,255,255,.65);
+      border: 1px solid rgba(10,20,40,.10);
+    }
+
+    .heroLeft{
+      padding-left: 140px; /* space for photo */
+      padding-top: 6px;
+    }
+    @media (max-width:520px){
+      .profileWrap{
+        position:static;
+        transform:none;
+        margin-bottom:12px;
+        align-items:flex-start;
+      }
+      .heroLeft{padding-left:0}
+      .hero{padding:18px}
+    }
+
+    .kicker{
+      font-size:14px;
+      color:var(--muted);
+      letter-spacing:.3px;
+    }
+    .heroTitle{
+      font-size:48px;
+      line-height:1.05;
       margin:8px 0 10px;
+      font-weight:800;
       letter-spacing:-.6px;
     }
-    .subtitle{
+    .heroTitle small{
+      display:block;
+      font-size:18px;
       color:var(--muted);
-      font-size:15.5px;
-      line-height:1.5;
+      font-weight:700;
+      letter-spacing:.1px;
+      margin-bottom:6px;
     }
-    .pills{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    @media (max-width:520px){
+      .heroTitle{font-size:40px}
+    }
+
+    .lead{
+      color:var(--muted);
+      line-height:1.55;
+      margin: 0 0 14px;
+    }
+
+    .pills{display:flex; flex-wrap:wrap; gap:10px; margin: 10px 0 14px}
     .pill{
       display:inline-flex; align-items:center; gap:8px;
       padding:9px 12px;
       border-radius:999px;
-      border:1px solid rgba(255,255,255,.11);
-      background: rgba(0,0,0,.18);
+      background: var(--chip);
+      border:1px solid var(--chipStroke);
+      color:var(--text);
       font-size:13px;
-      color:var(--muted);
+      box-shadow: 0 10px 26px rgba(0,0,0,.20);
     }
-    .pill b{color:var(--text); font-weight:600}
-
-    .profile{
-      width:110px; height:110px; border-radius:50%;
-      object-fit:cover;
-      border:2px solid rgba(255,255,255,.16);
-      box-shadow: 0 18px 50px rgba(0,0,0,.40);
-      background: rgba(255,255,255,.06);
-    }
+    body[data-theme="light"] .pill{box-shadow: 0 10px 26px rgba(10,20,40,.08)}
+    .pill span{color:var(--muted)}
 
     .stats{
-      display:grid; grid-template-columns: repeat(3, 1fr);
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
       gap:12px;
-      margin-top:16px;
+      margin-top: 8px;
     }
-    @media (max-width: 560px){
-      .hero{flex-direction:column; align-items:flex-start}
-      .hero-title{font-size:36px}
+    @media (max-width:520px){
       .stats{grid-template-columns:1fr}
-      .profile{width:96px;height:96px}
     }
     .stat{
-      padding:14px 14px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
+      padding:14px;
+      border-radius: var(--radius2);
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
     }
-    .stat .k{font-size:22px; font-weight:800; letter-spacing:-.2px}
-    .stat .v{font-size:13px; color:var(--muted); margin-top:4px}
+    .stat b{display:block; font-size:22px}
+    .stat span{color:var(--muted); font-size:13px}
 
-    .section{margin-top:18px}
-    .section h2{
-      margin:0 0 10px;
-      font-size:18px;
-      letter-spacing:.2px;
+    .sectionTitle{
+      font-size:15px;
+      color:var(--muted);
+      letter-spacing:.3px;
+      margin: 0 0 10px;
     }
-    .section p{margin:0; color:var(--muted); line-height:1.6}
 
-    .list{display:grid; gap:12px; margin-top:12px}
+    /* Right column */
+    .quickLinks{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:12px}
+    .quickLinks a{
+      font-size:13px;
+      color:var(--text);
+      background: var(--chip);
+      border:1px solid var(--chipStroke);
+      padding:8px 12px;
+      border-radius:999px;
+    }
+    .quickLinks a:hover{transform: translateY(-1px)}
+    .box{padding:18px}
+    .muted{color:var(--muted); line-height:1.55}
+    .divider{height:1px; background: rgba(255,255,255,.10); margin: 14px 0}
+    body[data-theme="light"] .divider{background: rgba(10,20,40,.10)}
+
+    /* Content sections */
+    .stack{display:grid; gap:14px}
     .item{
-      padding:14px 14px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
+      padding:16px;
+      border-radius: var(--radius2);
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
     }
-    .item .t{font-weight:700; margin-bottom:6px}
-    .item .m{color:var(--muted); font-size:13.5px; line-height:1.55}
-    .item .meta{margin-top:8px; display:flex; flex-wrap:wrap; gap:8px}
+    .item h3{margin:0 0 6px; font-size:16px}
+    .item .meta{color:var(--muted); font-size:13px}
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
     .tag{
       font-size:12px;
+      color:var(--muted);
       padding:6px 10px;
       border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.16);
-      color:var(--muted);
+      border:1px solid var(--chipStroke);
+      background: var(--chip);
     }
 
-    .quick{
-      padding:18px;
+    /* Projects */
+    .projectGrid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:12px;
     }
-    .quick .title{
-      font-size:18px; font-weight:800; letter-spacing:-.2px; margin:0 0 10px;
+    @media (max-width:700px){
+      .projectGrid{grid-template-columns:1fr}
     }
-    .quick-links{display:flex; flex-wrap:wrap; gap:10px}
-    .quick-links a{font-size:13px}
+    .proj{
+      padding:16px;
+      border-radius: var(--radius2);
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+    }
+    .proj h4{margin:0 0 6px; font-size:15px}
+    .proj p{margin:0; color:var(--muted); line-height:1.45; font-size:13px}
+    .proj a{
+      display:inline-block;
+      margin-top:10px;
+      color: var(--accent);
+      font-weight:700;
+      font-size:13px;
+    }
 
-    .divider{
-      height:1px;
-      background: rgba(255,255,255,.08);
-      margin:14px 0;
-    }
-
-    .social{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:12px;
-    }
-
-    .footer{
-      margin-top:26px;
-      color:rgba(255,255,255,.55);
-      font-size:12.5px;
+    /* Footer */
+    footer{
+      margin-top:18px;
+      color:var(--muted2);
+      font-size:12px;
       text-align:center;
+      padding: 14px 0 0;
     }
-
-    /* light theme */
-    body.light{
-      --bg1:#f5f7fb;
-      --bg2:#eef2ff;
-      --card:rgba(0,0,0,.05);
-      --card2:rgba(0,0,0,.06);
-      --stroke:rgba(0,0,0,.10);
-      --text:rgba(0,0,0,.88);
-      --muted:rgba(0,0,0,.62);
-      --soft:rgba(0,0,0,.06);
-      --shadow: 0 18px 50px rgba(0,0,0,.10);
-    }
-    body.light .topbar{
-      background: linear-gradient(180deg, rgba(245,247,251,.85), rgba(245,247,251,.55));
-      border-bottom:1px solid rgba(0,0,0,.06);
-    }
-    body.light .pill, body.light .tag{background: rgba(255,255,255,.65)}
-    body.light .btn{background: rgba(255,255,255,.65)}
   </style>
 </head>
 
-<body>
+<body data-theme="dark">
+  <!-- Top bar -->
   <div class="topbar">
-    <div class="topbar-inner">
+    <div class="nav">
       <a class="brand" href="#top">
-        <span class="dot"></span>
-        <strong>Rath Runkakada</strong>
+        <span class="brandMark" aria-hidden="true"></span>
+        <span>Rath Runkakada</span>
       </a>
 
-      <nav class="nav">
+      <div class="navLinks">
         <a href="#about">About</a>
         <a href="#education">Education</a>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
-      </nav>
+      </div>
 
-      <div class="actions">
-        <button class="btn small" id="themeBtn" type="button">Toggle theme</button>
-
-        <!-- CV: upload PDF to repo with this exact filename (or change it here) -->
-        <a class="btn small primary" href="./RathRunKakada_CV.pdf" target="_blank" rel="noopener">View / Download CV</a>
-
-        <!-- Hire / Collaborate: replace with your email -->
-        <a class="btn small" href="mailto:YOUR_EMAIL_HERE">Hire / Collaborate</a>
+      <div class="navActions">
+        <button class="btn ghost" id="themeBtn" type="button">Toggle theme</button>
+        <a class="btn primary" href="./cv.pdf" target="_blank" rel="noopener">View / Download CV</a>
+        <a class="btn" href="mailto:YOUR_EMAIL_HERE">Hire / Collaborate</a>
       </div>
     </div>
   </div>
@@ -280,321 +388,243 @@
       <!-- LEFT: HERO -->
       <section class="card">
         <div class="hero">
-          <!-- Photo: upload profile.jpg to repo (or change filename here) -->
-          <img class="profile" src="./profile.jpg" alt="Rath Runkakada" />
+          <!-- Photo block: overlaps edge + name under photo -->
+          <div class="profileWrap">
+            <!-- IMPORTANT: upload profile.jpg to repo root -->
+            <img class="profile" src="./profile.jpg" alt="Rath Runkakada" />
+            <div class="profileName">Rath Runkakada</div>
+          </div>
 
-          <div class="hero-left">
-            <div class="subtitle">Civil Engineer</div>
-            <div class="hero-title">Structural • Construction • Cost • AI</div>
-            <div class="subtitle">
-              Civil Engineer with a strong background in <b>site construction management</b>, <b>structural design</b>, and <b>cost estimation</b>.
-              Interested in applying <b>Python / Machine Learning</b> to civil engineering workflows.
+          <div class="heroLeft">
+            <div class="kicker">Civil Engineer</div>
+
+            <div class="heroTitle">
+              <small>Focus Areas</small>
+              Structural • Construction • Cost • AI
             </div>
 
+            <p class="lead">
+              Civil Engineer with a strong background in <b>site construction management</b>, <b>structural design</b>, and
+              <b>cost estimation</b>. Interested in applying <b>Python / Machine Learning</b> to civil engineering workflows.
+            </p>
+
             <div class="pills">
-              <div class="pill">📍 <b>Phnom Penh</b>, Cambodia</div>
-              <div class="pill">🐍 <b>Python</b> + Machine Learning (Applied)</div>
-              <div class="pill">🧱 <b>QA/QC</b> • Site Leadership • Method Statements</div>
+              <div class="pill">📍 <b>Phnom Penh</b>, <span>Cambodia</span></div>
+              <div class="pill">🐍 <b>Python</b> <span>+ Machine Learning (Applied)</span></div>
+              <div class="pill">🧱 <b>QA/QC</b> <span>• Site Leadership • Method Statements</span></div>
             </div>
 
             <div class="stats">
               <div class="stat">
-                <div class="k">M.Eng</div>
-                <div class="v">Civil Engineering (2022–2024)</div>
+                <b>M.Eng</b>
+                <span>Civil Engineering (2022–2024)</span>
               </div>
               <div class="stat">
-                <div class="k">5+ yrs</div>
-                <div class="v">Project & site experience (2020–present)</div>
+                <b>5+ yrs</b>
+                <span>Project & site experience (2020–present)</span>
               </div>
               <div class="stat">
-                <div class="k">Teaching</div>
-                <div class="v">Project Mgmt • Structural Design • AI</div>
+                <b>Teaching</b>
+                <span>Project Mgmt • Structural • AI</span>
               </div>
             </div>
 
-            <div class="section" style="margin-top:14px;">
-              <div class="subtitle">
-                This site is based on your CV content. Update “Projects” and add links (GitHub, LinkedIn, Google Scholar) if you have them.
-              </div>
-            </div>
+            <div class="divider"></div>
 
-            <div class="social">
-              <!-- Replace these links with your real ones -->
-              <a class="btn ghost small" href="https://github.com/RunKakada" target="_blank" rel="noopener">GitHub</a>
-              <a class="btn ghost small" href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
-              <a class="btn ghost small" href="https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" target="_blank" rel="noopener">Google Scholar</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card-inner">
-          <div id="about" class="section">
-            <h2>About</h2>
-            <p>
-              I’m a civil engineer focused on delivering safe, high-quality construction outcomes through strong field execution,
-              clear method statements, and effective QA/QC — while also building skills in structural analysis/design and applied
-              data/ML for civil engineering.
-            </p>
-          </div>
-
-          <div id="skills" class="section">
-            <h2 style="margin-top:16px;">Core Skills</h2>
-            <div class="list">
-              <div class="item">
-                <div class="t">Structural Design & Analysis</div>
-                <div class="m">RC design concepts, structural detailing workflow, coordination, drawing review, and practical constructability.</div>
-                <div class="meta">
-                  <span class="tag">RC Design</span><span class="tag">Detailing</span><span class="tag">Coordination</span>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="t">Construction Management (Site)</div>
-                <div class="m">Method statements, scheduling support, site supervision, subcontractor coordination, reporting, and productivity improvement.</div>
-                <div class="meta">
-                  <span class="tag">Method Statements</span><span class="tag">Site Leadership</span><span class="tag">Reporting</span>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="t">QA/QC & Cost Estimation</div>
-                <div class="m">Quality inspections, NCR/closure, checklists, and cost estimation basics aligned with project execution.</div>
-                <div class="meta">
-                  <span class="tag">QA/QC</span><span class="tag">Inspections</span><span class="tag">Cost</span>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="t">Python & Applied Machine Learning</div>
-                <div class="m">Data cleaning, analysis, simple models, and using ML to improve civil engineering workflows.</div>
-                <div class="meta">
-                  <span class="tag">Python</span><span class="tag">Data</span><span class="tag">ML (Applied)</span>
-                </div>
-              </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <!-- Edit your links -->
+              <a class="btn" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+              <a class="btn" href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener">Google Scholar</a>
+              <a class="btn" href="https://github.com/RunKakada" target="_blank" rel="noopener">GitHub</a>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- RIGHT: QUICK LINKS / RESEARCH -->
+      <!-- RIGHT: QUICK LINKS + RESEARCH -->
       <aside class="card">
-        <div class="quick">
-          <div class="title">Quick Links</div>
-          <div class="quick-links">
-            <a class="btn small" href="#experience">Work Timeline</a>
-            <a class="btn small" href="#skills">Core Skills</a>
-            <a class="btn small" href="#projects">Projects</a>
-            <a class="btn small" href="#contact">Contact</a>
+        <div class="box">
+          <h2 style="margin:0 0 10px">Quick Links</h2>
+          <div class="quickLinks">
+            <a href="#experience">Work Timeline</a>
+            <a href="#skills">Core Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
           </div>
 
           <div class="divider"></div>
 
-          <div class="section">
-            <h2>Research Direction</h2>
-            <p>
-              Interested in resilient & sustainable structural design, and applying machine learning/data analysis
-              to civil engineering workflows.
-            </p>
-          </div>
-
-          <div class="section" style="margin-top:14px;">
-            <h2>PhD Focus (optional)</h2>
-            <p>
-              Add your target lab/university and 2–3 research themes here (e.g., seismic performance, optimization, BIM + AI, durability).
-            </p>
-          </div>
+          <h3 style="margin:0 0 8px">Research Direction</h3>
+          <p class="muted" style="margin:0">
+            Interested in resilient & sustainable structural design, and applying machine learning/data analysis
+            to civil engineering workflows.
+          </p>
 
           <div class="divider"></div>
 
-          <div id="education" class="section">
-            <h2>Education</h2>
-            <div class="list">
-              <div class="item">
-                <div class="t">M.Eng — Civil Engineering</div>
-                <div class="m">2022–2024 • (Add university name here)</div>
-                <div class="meta"><span class="tag">Structural</span><span class="tag">Project Mgmt</span></div>
-              </div>
-              <div class="item">
-                <div class="t">B.Eng / BSc — (Your degree)</div>
-                <div class="m">(Add years + university)</div>
-                <div class="meta"><span class="tag">Civil</span><span class="tag">Construction</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="divider"></div>
-
-          <div class="section">
-            <h2>Languages</h2>
-            <div class="list">
-              <div class="item">
-                <div class="t">Khmer</div>
-                <div class="m">Native</div>
-              </div>
-              <div class="item">
-                <div class="t">English</div>
-                <div class="m">Professional working proficiency (edit as needed)</div>
-              </div>
-              <div class="item">
-                <div class="t">Korean</div>
-                <div class="m">(Edit level if applicable)</div>
-              </div>
-            </div>
-          </div>
+          <h3 style="margin:0 0 8px">PhD Focus (optional)</h3>
+          <p class="muted" style="margin:0">
+            Add your target lab/university and 2–3 research themes here (e.g., seismic performance, optimization, BIM + AI, durability).
+          </p>
         </div>
       </aside>
     </div>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="card section" style="margin-top:18px;">
-      <div class="card-inner">
-        <h2>Experience</h2>
-        <p>Update these items with your real company names, roles, and dates.</p>
+    <!-- ABOUT / EDUCATION / EXPERIENCE / SKILLS -->
+    <div class="grid" style="margin-top:16px">
+      <section class="card pad" id="about">
+        <div class="sectionTitle">About</div>
+        <p class="muted" style="margin:0">
+          Write a short, strong introduction here (3–5 lines). Keep it simple and professional.
+          Mention your best strengths, key tools, and what roles/research you’re targeting.
+        </p>
+      </section>
 
-        <div class="list">
+      <section class="card pad" id="education">
+        <div class="sectionTitle">Education</div>
+        <div class="stack">
           <div class="item">
-            <div class="t">Site Engineer / QAQC Engineer — (Company Name)</div>
-            <div class="m">
-              (2020–Present) • Key achievements: improved quality inspections, coordinated site work, prepared method statements, ensured compliance.
-            </div>
-            <div class="meta">
-              <span class="tag">QA/QC</span><span class="tag">Site Supervision</span><span class="tag">Method Statements</span>
+            <h3>M.Eng — Civil Engineering</h3>
+            <div class="meta">2022–2024 • (Add university name here)</div>
+            <div class="tags">
+              <span class="tag">Structural</span>
+              <span class="tag">Project Mgmt</span>
+              <span class="tag">AI (Applied)</span>
             </div>
           </div>
 
           <div class="item">
-            <div class="t">Structural / Project Support — (Company/Project)</div>
-            <div class="m">
-              (Year–Year) • Supported design coordination, drawing review, BOQ/cost checks, and constructability.
-            </div>
-            <div class="meta">
-              <span class="tag">Coordination</span><span class="tag">Drawings</span><span class="tag">Cost</span>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="t">Teaching / Mentoring — (Institute / Classes)</div>
-            <div class="m">
-              (Year–Year) • Taught/mentored civil engineering topics, project management, structural basics, or AI for civil engineering.
-            </div>
-            <div class="meta">
-              <span class="tag">Teaching</span><span class="tag">Mentoring</span><span class="tag">Leadership</span>
+            <h3>B.Eng / BSc — (Your degree)</h3>
+            <div class="meta">(Add years + university)</div>
+            <div class="tags">
+              <span class="tag">Construction</span>
+              <span class="tag">Design</span>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section class="card pad" id="experience">
+        <div class="sectionTitle">Experience</div>
+        <div class="stack">
+          <div class="item">
+            <h3>Site / Project Engineer — (Company)</h3>
+            <div class="meta">2020–Present • Phnom Penh</div>
+            <p class="muted" style="margin:10px 0 0">
+              Add 2–4 bullet-style sentences: key responsibilities, results, scale (budget/teams), and tools used.
+            </p>
+            <div class="tags">
+              <span class="tag">QA/QC</span>
+              <span class="tag">Method Statements</span>
+              <span class="tag">Structural</span>
+            </div>
+          </div>
+
+          <div class="item">
+            <h3>Teaching / Mentoring — (Institution)</h3>
+            <div class="meta">(Years) • Topics: Project Mgmt, Structural, AI</div>
+            <p class="muted" style="margin:10px 0 0">
+              Mention what you teach, who you mentor, and any outcomes.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card pad" id="skills">
+        <div class="sectionTitle">Skills</div>
+        <div class="stack">
+          <div class="item">
+            <h3>Engineering</h3>
+            <div class="tags">
+              <span class="tag">Structural Design</span>
+              <span class="tag">Construction Mgmt</span>
+              <span class="tag">Cost Estimation</span>
+              <span class="tag">QA/QC</span>
+              <span class="tag">Site Leadership</span>
+            </div>
+          </div>
+          <div class="item">
+            <h3>Tech / Tools</h3>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Data Analysis</span>
+              <span class="tag">Machine Learning (Applied)</span>
+              <span class="tag">BIM (optional)</span>
+            </div>
+          </div>
+          <div class="item">
+            <h3>Languages</h3>
+            <div class="tags">
+              <span class="tag">Khmer (Native)</span>
+              <span class="tag">English (Add level)</span>
+              <span class="tag">Korean (Add level)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
 
     <!-- PROJECTS -->
-    <section id="projects" class="card section" style="margin-top:18px;">
-      <div class="card-inner">
-        <h2>Projects / Portfolio</h2>
-        <p>Add 3–6 strong projects. Keep each one short but impressive (role + tools + results).</p>
+    <section class="card pad" id="projects" style="margin-top:16px">
+      <div class="sectionTitle">Projects</div>
+      <div class="projectGrid">
+        <div class="proj">
+          <h4>Structural Project — (Title)</h4>
+          <p>Brief description: what you designed/delivered, and your role. Mention software or deliverables.</p>
+          <a href="#" target="_blank" rel="noopener">View (add link)</a>
+        </div>
 
-        <div class="list">
-          <div class="item">
-            <div class="t">Structural Design — (Project Name)</div>
-            <div class="m">
-              Scope: (e.g., RC frame design, detailing coordination). Role: (your role).
-              Outcome: (e.g., optimized design, resolved clashes, improved constructability).
-            </div>
-            <div class="meta">
-              <span class="tag">RC Design</span><span class="tag">Detailing</span><span class="tag">Coordination</span>
-            </div>
-          </div>
+        <div class="proj">
+          <h4>Construction Management — (Title)</h4>
+          <p>Brief description: schedule, quality, safety, coordination, cost tracking.</p>
+          <a href="#" target="_blank" rel="noopener">View (add link)</a>
+        </div>
 
-          <div class="item">
-            <div class="t">Construction Management — (Project Name)</div>
-            <div class="m">
-              Scope: (site supervision, QA/QC, method statements). Result: (progress, quality improvement, cost/time saving).
-            </div>
-            <div class="meta">
-              <span class="tag">Site</span><span class="tag">QA/QC</span><span class="tag">Methods</span>
-            </div>
-          </div>
+        <div class="proj">
+          <h4>AI for Civil Engineering — (Title)</h4>
+          <p>Brief description: prediction/optimization/analysis. Add GitHub link if you have it.</p>
+          <a href="#" target="_blank" rel="noopener">View (add link)</a>
+        </div>
 
-          <div class="item">
-            <div class="t">AI for Civil Engineering — (Project Name)</div>
-            <div class="m">
-              Built a Python workflow for (prediction/optimization/classification). Dataset: (brief). Result: (brief).
-              Link your GitHub repo here if available.
-            </div>
-            <div class="meta">
-              <span class="tag">Python</span><span class="tag">ML</span><span class="tag">Data</span>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="t">Photos / Site Activities (optional)</div>
-            <div class="m">
-              If you want a photo gallery later, we can add a simple grid and you can upload images to the repo.
-            </div>
-            <div class="meta">
-              <span class="tag">Photos</span><span class="tag">Field Work</span><span class="tag">Documentation</span>
-            </div>
-          </div>
+        <div class="proj">
+          <h4>Research / Paper — (optional)</h4>
+          <p>Add your paper, thesis, or research summary and link to Google Scholar or PDF.</p>
+          <a href="#" target="_blank" rel="noopener">View (add link)</a>
         </div>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="card section" style="margin-top:18px;">
-      <div class="card-inner">
-        <h2>Contact</h2>
-        <p>
-          Email is best. You can also link WhatsApp/Telegram if you want.
-        </p>
-
-        <div class="social" style="margin-top:12px;">
-          <a class="btn" href="mailto:YOUR_EMAIL_HERE">Email</a>
-          <a class="btn" href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn" href="https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" target="_blank" rel="noopener">Google Scholar</a>
-          <a class="btn" href="https://github.com/RunKakada" target="_blank" rel="noopener">GitHub</a>
-        </div>
-
-        <div class="divider"></div>
-
-        <p style="color:rgba(255,255,255,.60); font-size:13px;">
-          Tip: Replace <b>YOUR_EMAIL_HERE</b>, <b>YOUR-LINKEDIN</b>, and <b>YOUR_SCHOLAR_ID</b> in this file.
-        </p>
+    <section class="card pad" id="contact" style="margin-top:16px">
+      <div class="sectionTitle">Contact</div>
+      <p class="muted" style="margin:0 0 12px">
+        Add your email + location. For PhD, also include LinkedIn + Google Scholar.
+      </p>
+      <div style="display:flex; flex-wrap:wrap; gap:10px">
+        <a class="btn primary" href="mailto:YOUR_EMAIL_HERE">Email Me</a>
+        <a class="btn" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener">Google Scholar</a>
       </div>
     </section>
 
-    <div class="footer">
+    <footer>
       © <span id="year"></span> Rath Runkakada • Built with GitHub Pages
-    </div>
+    </footer>
   </div>
 
   <script>
-    // Year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Theme toggle (stored)
-    const key = "rr_theme";
     const themeBtn = document.getElementById("themeBtn");
-
-    function applyTheme(){
-      const v = localStorage.getItem(key);
-      document.body.classList.toggle("light", v === "light");
-    }
-
-    applyTheme();
+    const saved = localStorage.getItem("theme");
+    if(saved){ document.body.setAttribute("data-theme", saved); }
 
     themeBtn.addEventListener("click", () => {
-      const isLight = document.body.classList.toggle("light");
-      localStorage.setItem(key, isLight ? "light" : "dark");
+      const current = document.body.getAttribute("data-theme") || "dark";
+      const next = current === "dark" ? "light" : "dark";
+      document.body.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
     });
 
-    // Smooth scroll for hash links
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener("click", (e)=>{
-        const id = a.getAttribute("href");
-        const el = document.querySelector(id);
-        if(!el) return;
-        e.preventDefault();
-        el.scrollIntoView({behavior:"smooth", block:"start"});
-      });
-    });
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
