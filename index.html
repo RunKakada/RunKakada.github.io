@@ -4,191 +4,414 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Rath Runkakada | Civil Engineer</title>
+  <meta name="description" content="Rath Runkakada — Civil Engineer | Structural | Construction | Cost | AI" />
 
   <style>
     :root{
-      --bg0:#f6f8fb;
-      --bg1:#eaf0f7;
-      --card:rgba(10,20,40,.05);
-      --card2:rgba(10,20,40,.07);
-      --stroke:rgba(10,20,40,.12);
-      --text:rgba(10,20,40,.92);
-      --muted:rgba(10,20,40,.70);
-      --muted2:rgba(10,20,40,.55);
-      --shadow:0 18px 55px rgba(10,20,40,.14);
-      --shadow2:0 10px 28px rgba(10,20,40,.12);
-      --radius:18px;
-      --radius2:14px;
-      --accent:#2563eb;
-      --max:1100px;
+      --bg: #f5f5f7;
+      --surface: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --stroke: rgba(17,24,39,.10);
+      --shadow: 0 18px 45px rgba(17,24,39,.08);
+      --radius: 22px;
+      --max: 1060px;
+      --accent: #0a84ff; /* Apple-ish blue */
     }
 
-    *{box-sizing:border-box}
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background: linear-gradient(180deg, var(--bg0), var(--bg1));
-      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans";
+      background: var(--bg);
+      color: var(--text);
     }
 
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max);margin:0 auto;padding:20px}
+    a{ color: inherit; text-decoration: none; }
 
     .topbar{
-      border-bottom:1px solid var(--stroke);
-      background:white;
-      position:sticky;top:0;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(245,245,247,.72);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--stroke);
     }
 
     .nav{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:14px 20px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
     }
 
-    .brand{font-weight:700}
-    .navLinks{display:flex;gap:18px;font-size:14px;color:var(--muted)}
-    .navLinks a:hover{color:var(--text)}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight: 700;
+      letter-spacing: -.2px;
+    }
+    .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #fff, rgba(10,132,255,.35));
+      box-shadow: 0 0 0 4px rgba(10,132,255,.10);
+    }
+
+    .navLinks{
+      display:flex;
+      gap: 16px;
+      font-size: 14px;
+      color: var(--muted);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .navLinks a{
+      padding: 8px 10px;
+      border-radius: 999px;
+    }
+    .navLinks a:hover{
+      background: rgba(17,24,39,.04);
+      color: var(--text);
+    }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 22px 18px 54px;
+    }
 
     .grid{
       display:grid;
-      grid-template-columns:1.25fr .95fr;
-      gap:18px;
-      margin-top:20px;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
     }
-
-    @media(max-width:900px){
-      .grid{grid-template-columns:1fr}
+    @media (max-width: 960px){
+      .grid{ grid-template-columns: 1fr; }
+      .nav{ flex-wrap: wrap; justify-content: center; }
+      .navLinks{ width: 100%; justify-content: center; }
     }
 
     .card{
-      background:white;
-      border:1px solid var(--stroke);
-      border-radius:var(--radius);
-      padding:20px;
-      box-shadow:var(--shadow2);
+      background: var(--surface);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
     }
 
-    .heroTitle{
-      font-size:48px;
-      font-weight:800;
-      line-height:1.1;
-      margin:10px 0;
-    }
+    .pad{ padding: 22px; }
 
-    .lead{color:var(--muted);line-height:1.6}
+    /* HERO */
+    .hero{
+      display:flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+    @media (max-width: 640px){
+      .hero{ flex-direction: column; }
+    }
 
     .profile{
-      width:120px;height:120px;
-      border-radius:16px;
-      object-fit:cover;
-      margin-bottom:12px;
+      width: 118px;
+      height: 118px;
+      border-radius: 18px;
+      object-fit: cover;
+      border: 1px solid rgba(17,24,39,.10);
+      box-shadow: 0 12px 28px rgba(17,24,39,.12);
+      background: rgba(17,24,39,.03);
+      flex: 0 0 auto;
     }
 
-    .btn{
-      display:inline-block;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid var(--stroke);
-      background:var(--card);
-      font-size:14px;
-      margin-top:10px;
+    .kicker{
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: .2px;
+      margin-top: 2px;
     }
 
-    .btn.primary{
-      background:var(--accent);
-      color:white;
-      border:none;
+    .title{
+      font-size: 44px;
+      line-height: 1.05;
+      margin: 8px 0 10px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+    @media (max-width: 640px){
+      .title{ font-size: 40px; }
     }
 
+    .sub{
+      color: var(--muted);
+      line-height: 1.65;
+      margin: 0;
+      font-size: 15px;
+      max-width: 60ch;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .chip{
+      font-size: 13px;
+      color: rgba(17,24,39,.82);
+      background: rgba(17,24,39,.04);
+      border: 1px solid rgba(17,24,39,.08);
+      padding: 8px 10px;
+      border-radius: 999px;
+    }
+
+    /* Right card (Contact) */
     .sectionTitle{
-      font-size:15px;
-      color:var(--muted);
-      margin-bottom:10px;
-      letter-spacing:.3px;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: .3px;
+      margin: 0 0 12px;
     }
 
-    footer{
-      margin-top:40px;
-      text-align:center;
-      font-size:12px;
-      color:var(--muted2);
+    .contactRow{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .contactMeta{
+      display:flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .name{
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -.2px;
+    }
+
+    .loc{
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .iconBar{
+      display:flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .iconBtn{
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(17,24,39,.10);
+      background: rgba(17,24,39,.03);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .iconBtn:hover{
+      transform: translateY(-1px);
+      background: rgba(10,132,255,.08);
+      border-color: rgba(10,132,255,.25);
+    }
+    .iconBtn:active{
+      transform: translateY(0px);
+    }
+    .iconBtn svg{
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      color: rgba(17,24,39,.82);
+    }
+
+    /* Sections */
+    .section{
+      margin-top: 16px;
+    }
+
+    .miniGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 860px){
+      .miniGrid{ grid-template-columns: 1fr; }
+    }
+
+    .mini{
+      background: rgba(17,24,39,.02);
+      border: 1px solid rgba(17,24,39,.08);
+      border-radius: 18px;
+      padding: 16px;
+    }
+    .mini h3{
+      margin: 0 0 6px;
+      font-size: 14px;
+      letter-spacing: -.2px;
+    }
+    .mini p{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .footer{
+      margin-top: 18px;
+      text-align: center;
+      color: rgba(17,24,39,.45);
+      font-size: 12px;
+    }
+
+    /* Accessibility */
+    .sr-only{
+      position:absolute;
+      width:1px;height:1px;
+      padding:0;margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
     }
   </style>
 </head>
 
 <body>
+  <div class="topbar">
+    <div class="nav">
+      <a class="brand" href="#top" aria-label="Home">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Rath Runkakada</span>
+      </a>
 
-<div class="topbar">
-  <div class="nav">
-    <div class="brand">Rath Runkakada</div>
-    <div class="navLinks">
-      <a href="#about">About</a>
-      <a href="#education">Education</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
+      <div class="navLinks" aria-label="Sections">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="wrap">
-  <div class="grid">
+  <div id="top" class="wrap">
+    <div class="grid">
+      <!-- LEFT: HERO -->
+      <section class="card">
+        <div class="pad">
+          <div class="hero">
+            <img class="profile" src="./profile2.jpg" alt="Rath Runkakada" />
 
-    <!-- LEFT SIDE -->
-    <section class="card">
-      <img src="./profile2.jpg" class="profile" alt="Rath Runkakada">
+            <div>
+              <div class="kicker">Civil Engineer</div>
+              <div class="title">Structural • Construction • Cost • AI</div>
+              <p class="sub">
+                Civil Engineer with a strong background in site construction management, structural design, and cost estimation.
+                Interested in applying Python / machine learning to civil engineering workflows.
+              </p>
 
-      <div class="heroTitle">
-        Structural • Construction • Cost • AI
-      </div>
+              <div class="chips" aria-label="Highlights">
+                <span class="chip">Phnom Penh, Cambodia</span>
+                <span class="chip">Python + ML (Applied)</span>
+                <span class="chip">QA/QC • Site Leadership</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <p class="lead">
-        Civil Engineer with strong background in site construction management,
-        structural design, and cost estimation. Interested in applying
-        Python / Machine Learning to civil engineering workflows.
-      </p>
+      <!-- RIGHT: CONTACT (TOP RIGHT) -->
+      <aside class="card">
+        <div class="pad">
+          <div class="sectionTitle">Contact</div>
 
-      <div style="margin-top:15px;">
-        <a class="btn" href="https://www.linkedin.com/in/rathrun-kakada168" target="_blank">
-          LinkedIn
-        </a>
-        <a class="btn" href="https://github.com/RunKakada" target="_blank">
-          GitHub
-        </a>
-      </div>
-    </section>
+          <div class="contactRow">
+            <div class="contactMeta">
+              <div class="name">Rath Runkakada</div>
+              <div class="loc">Phnom Penh, Cambodia</div>
+            </div>
 
-    <!-- RIGHT SIDE (CONTACT MOVED HERE) -->
-    <aside class="card">
-      <div class="sectionTitle">Contact</div>
+            <div class="iconBar">
+              <!-- Email -->
+              <a class="iconBtn" href="mailto:kakdarun@gmail.com" aria-label="Email">
+                <span class="sr-only">Email</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+              </a>
 
-      <p style="margin:0 0 12px;color:var(--muted);">
-        Phnom Penh, Cambodia
-      </p>
+              <!-- LinkedIn -->
+              <a class="iconBtn" href="https://www.linkedin.com/in/rathrun-kakada168" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <span class="sr-only">LinkedIn</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.48 1h.02C3.87 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.83v2.12h.05c.53-1 1.82-2.06 3.75-2.06 4 0 4.74 2.63 4.74 6.05v7.41h-4v-6.57c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.49v6.68h-4V7.98z"/>
+                </svg>
+              </a>
 
-      <div>
-        <a class="btn primary" href="mailto:kakdarun@gmail.com">
-          kakdarun@gmail.com
-        </a>
-      </div>
+              <!-- GitHub -->
+              <a class="iconBtn" href="https://github.com/RunKakada" target="_blank" rel="noopener" aria-label="GitHub">
+                <span class="sr-only">GitHub</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 .5C5.73.5.75 5.62.75 12.04c0 5.14 3.44 9.5 8.2 11.04.6.12.82-.27.82-.6 0-.3-.01-1.07-.02-2.1-3.34.75-4.05-1.66-4.05-1.66-.55-1.44-1.35-1.82-1.35-1.82-1.1-.78.08-.76.08-.76 1.22.09 1.86 1.28 1.86 1.28 1.08 1.9 2.83 1.35 3.52 1.03.11-.8.42-1.35.76-1.66-2.67-.31-5.48-1.37-5.48-6.1 0-1.35.46-2.45 1.22-3.31-.12-.31-.53-1.58.12-3.28 0 0 1-.33 3.3 1.26.96-.27 1.98-.4 3-.4 1.02 0 2.04.14 3 .4 2.3-1.59 3.3-1.26 3.3-1.26.65 1.7.24 2.97.12 3.28.76.86 1.22 1.96 1.22 3.31 0 4.74-2.82 5.79-5.5 6.1.43.39.82 1.16.82 2.34 0 1.69-.02 3.05-.02 3.47 0 .33.22.73.83.6 4.75-1.54 8.2-5.9 8.2-11.04C23.25 5.62 18.27.5 12 .5z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
 
-      <div>
-        <a class="btn" href="https://www.linkedin.com/in/rathrun-kakada168" target="_blank">
-          www.linkedin.com/in/rathrun-kakada168
-        </a>
-      </div>
-    </aside>
+    <!-- CONTENT -->
+    <div class="section miniGrid" style="margin-top:16px">
+      <section class="mini" id="about">
+        <h3>About</h3>
+        <p>
+          Write a short, strong introduction here (3–5 lines). Keep it simple and professional.
+          Mention your best strengths, key tools, and what roles/research you’re targeting.
+        </p>
+      </section>
 
+      <section class="mini" id="education">
+        <h3>Education</h3>
+        <p>
+          M.Eng — Civil Engineering (2022–2024) • (Add university)<br/>
+          B.Eng / BSc — (Add degree, years, university)
+        </p>
+      </section>
+
+      <section class="mini" id="skills">
+        <h3>Skills</h3>
+        <p>
+          Structural Design • Construction Mgmt • Cost Estimation • QA/QC<br/>
+          Python • Data Analysis • Machine Learning (Applied)
+        </p>
+      </section>
+
+      <section class="mini" id="projects">
+        <h3>Projects</h3>
+        <p>
+          Add 3–6 projects with 1–2 lines each. Keep it concise. Link to GitHub where possible.
+        </p>
+      </section>
+    </div>
+
+    <div class="footer">
+      © <span id="year"></span> Rath Runkakada
+    </div>
   </div>
 
-  <footer>
-    © 2026 Rath Runkakada
-  </footer>
-
-</div>
-
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
