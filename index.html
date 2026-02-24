@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rath Runkakada | Civil Engineer</title>
+  <meta name="description" content="Rath Runkakada — Civil Engineer specializing in Structural Design, Construction Management, and AI for Civil Engineering." />
+
+  <style>
+    :root{
+      --bg:#0b1020;
+      --panel:#101a33;
+      --text:#eaf0ff;
+      --muted:#b8c2e6;
+      --brand:#6aa6ff;
+      --brand2:#7cf7d4;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1100px;
+    }
+    [data-theme="light"]{
+      --bg:#f6f8ff;
+      --panel:#ffffff;
+      --text:#111827;
+      --muted:#4b5563;
+      --brand:#2563eb;
+      --brand2:#059669;
+      --border:rgba(17,24,39,.10);
+      --shadow: 0 10px 30px rgba(17,24,39,.08);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      background: radial-gradient(1200px 800px at 20% 10%, rgba(106,166,255,.25), transparent 60%),
+                  radial-gradient(900px 600px at 90% 0%, rgba(124,247,212,.18), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: color-mix(in oklab, var(--bg) 75%, transparent);
+      border-bottom:1px solid var(--border);
+    }
+    .topbar .inner{
+      max-width:var(--max); margin:0 auto;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 24px;
+    }
+    .brand{
+      display:flex; gap:10px; align-items:center;
+      font-weight:700; letter-spacing:.2px;
+    }
+    .dot{
+      width:12px; height:12px; border-radius:999px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 0 0 6px rgba(106,166,255,.10);
+    }
+    nav{display:flex; gap:14px; flex-wrap:wrap; align-items:center}
+    nav a{
+      font-size:14px; color:var(--muted);
+      padding:8px 10px; border-radius:10px;
+    }
+    nav a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    [data-theme="light"] nav a:hover{background:rgba(17,24,39,.06)}
+    .btn{
+      border:1px solid var(--border);
+      background: color-mix(in oklab, var(--panel) 70%, transparent);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:12px;
+      cursor:pointer;
+      box-shadow: var(--shadow);
+      font-weight:600;
+      font-size:14px;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .hero{
+      padding:42px 0 22px;
+      display:grid; gap:18px;
+      grid-template-columns: 1.4fr .6fr;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      nav{display:none}
+    }
+    .card{
+      background: color-mix(in oklab, var(--panel) 90%, transparent);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:22px;
+    }
+    .h1{font-size:44px; line-height:1.08; margin:0 0 8px}
+    .subtitle{color:var(--muted); margin:0}
+    .pillrow{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:8px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      color:var(--muted);
+      font-size:13px;
+      background: rgba(255,255,255,.04);
+    }
+    [data-theme="light"] .pill{background: rgba(17,24,39,.03)}
+    .grid{
+      display:grid; gap:16px;
+      grid-template-columns: repeat(12, 1fr);
+      margin: 16px 0 30px;
+    }
+    .col-6{grid-column: span 6}
+    .col-4{grid-column: span 4}
+    .col-8{grid-column: span 8}
+    .col-12{grid-column: span 12}
+    @media (max-width: 900px){
+      .col-6,.col-4,.col-8{grid-column: span 12}
+    }
+    h2{margin:0 0 10px; font-size:22px}
+    .muted{color:var(--muted)}
+    .item{padding:14px 0; border-top:1px solid var(--border)}
+    .item:first-child{border-top:none; padding-top:0}
+    .row{display:flex; gap:10px; align-items:baseline; justify-content:space-between; flex-wrap:wrap}
+    .title{font-weight:700}
+    .meta{color:var(--muted); font-size:13px}
+    ul{margin:10px 0 0 18px; color:var(--muted)}
+    li{margin:6px 0}
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .tag{
+      font-size:12px; color:var(--muted);
+      padding:6px 8px; border:1px solid var(--border);
+      border-radius:999px;
+      background: rgba(255,255,255,.04);
+    }
+    [data-theme="light"] .tag{background: rgba(17,24,39,.03)}
+    .footer{
+      padding:26px 0 50px;
+      color:var(--muted);
+      text-align:center;
+    }
+    .kpi{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+    .kpi .box{
+      padding:14px;
+      border:1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(255,255,255,.04);
+    }
+    [data-theme="light"] .kpi .box{background: rgba(17,24,39,.03)}
+    .kpi .num{font-size:22px; font-weight:800}
+    .kpi .lbl{font-size:12px; color:var(--muted)}
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    .ph{
+      border:1px dashed var(--border);
+      border-radius: 16px;
+      padding:14px;
+      color:var(--muted);
+      min-height:120px;
+      display:flex; align-items:center; justify-content:center;
+      text-align:center;
+      background: rgba(255,255,255,.03);
+    }
+    .notice{
+      font-size:13px;
+      color:var(--muted);
+      border-left:3px solid color-mix(in oklab, var(--brand) 70%, transparent);
+      padding-left:10px;
+      margin-top:10px;
+    }
+    .small{font-size:13px}
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>Rath Runkakada</span>
+      </div>
+
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#activities">Activities</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div style="display:flex; gap:10px; align-items:center;">
+        <button class="btn" id="themeBtn" type="button" aria-label="Toggle theme">Toggle theme</button>
+        <a class="btn" href="#contact">Hire / Collaborate</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" id="top">
+      <div class="card">
+        <h1 class="h1">Civil Engineer</h1>
+        <p class="subtitle">
+          Structural Design • Construction Management • Cost Estimation • AI for Civil Engineering
+        </p>
+
+        <div class="pillrow">
+          <span class="pill">📍 Phnom Penh, Cambodia</span>
+          <span class="pill">🧠 Python + Machine Learning (Applied)</span>
+          <span class="pill">🏗️ QA/QC • Site Leadership • Method Statements</span>
+        </div>
+
+        <div class="kpi" aria-label="Highlights">
+          <div class="box">
+            <div class="num">M.Eng</div>
+            <div class="lbl">Civil Engineering (2022–2024)</div>
+          </div>
+          <div class="box">
+            <div class="num">5+ yrs</div>
+            <div class="lbl">Project & site experience (2020–present)</div>
+          </div>
+          <div class="box">
+            <div class="num">Teaching</div>
+            <div class="lbl">Project Mgmt • Structural Design • AI</div>
+          </div>
+        </div>
+
+        <p class="notice">
+          This site is based on your CV content. Update “Projects” and add links (GitHub, LinkedIn, Google Scholar) if you have them.
+        </p>
+      </div>
+
+      <aside class="card">
+        <h2>Quick Links</h2>
+        <div class="tags">
+          <a class="tag" href="#experience">Work Timeline</a>
+          <a class="tag" href="#skills">Core Skills</a>
+          <a class="tag" href="#activities">Photos / Activities</a>
+          <a class="tag" href="#contact">Contact</a>
+        </div>
+
+        <div class="item">
+          <div class="title">Research Direction</div>
+          <div class="muted small">
+            Interested in resilient & sustainable structural design, and applying machine learning/data analysis to civil engineering workflows.
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="title">PhD Focus (optional)</div>
+          <div class="muted small">
+            Add your target lab/university and 2–3 research themes here (e.g., seismic performance, optimization, BIM + AI, durability).
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="about" class="grid">
+      <div class="card col-8">
+        <h2>About</h2>
+        <p class="muted">
+          I’m a civil engineer with a strong background in <b>site construction management</b>, <b>structural design</b>,
+          and <b>cost estimation</b>. I prepare construction method statements, solve technical issues on site,
+          lead daily operations to meet deadlines, and support high-quality, safe construction delivery.
+        </p>
+        <p class="muted">
+          I also explore <b>AI (machine learning & data analysis)</b> to enhance decision-making and productivity in civil engineering.
+        </p>
+
+        <div class="tags" aria-label="Core competencies">
+          <span class="tag">Structural Design & Drawings</span>
+          <span class="tag">Project Scheduling (Primavera P6 / MS Project)</span>
+          <span class="tag">Budgeting & Cost Estimation</span>
+          <span class="tag">QA/QC</span>
+          <span class="tag">Method Statements</span>
+          <span class="tag">Team Leadership</span>
+        </div>
+      </div>
+
+      <div class="card col-4">
+        <h2>Languages</h2>
+        <div class="item">
+          <div class="row">
+            <span class="title">Khmer</span><span class="meta">Native</span>
+          </div>
+        </div>
+        <div class="item">
+          <div class="row">
+            <span class="title">English</span><span class="meta">Intermediate</span>
+          </div>
+        </div>
+        <div class="item">
+          <div class="row">
+            <span class="title">Thai</span><span class="meta">Basic</span>
+          </div>
+        </div>
+        <div class="item">
+          <div class="row">
+            <span class="title">Chinese</span><span class="meta">Basic</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="grid">
+      <div class="card col-12">
+        <h2>Education</h2>
+
+        <div class="item">
+          <div class="row">
+            <span class="title">Master of Civil Engineering</span>
+            <span class="meta">International University • 2022 – 2024</span>
+          </div>
+          <ul>
+            <li>Focus: structural engineering / construction management (edit with your thesis topic if you want).</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="row">
+            <span class="title">Bachelor of Civil Engineering</span>
+            <span class="meta">National Technical Training Institute • 2017 – 2022</span>
+          </div>
+          <ul>
+            <li>Coursework: structures, construction, cost estimating, project planning (customize as needed).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="grid">
+      <div class="card col-12">
+        <h2>Work Experience</h2>
+
+        <div class="item">
+          <div class="row">
+            <span class="title">Wagon Engineering Center — Structural Design & Project Management</span>
+            <span class="meta">2021 – Present</span>
+          </div>
+          <ul>
+            <li>Structural design and drawing.</li>
+            <li>Project scheduling (Primavera P6, MS Project, or similar).</li>
+            <li>Resource planning (labor, materials, equipment) and cost optimization.</li>
+            <li>Budgeting and cost estimation; tracking expenses.</li>
+            <li>Status updates and resolving scheduling conflicts.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="row">
+            <span class="title">Teacher (Part-time) — Project Management, Structural Design, AI</span>
+            <span class="meta">2022 – Present</span>
+          </div>
+          <ul>
+            <li>Teach project management, structural design, and AI concepts to support student success.</li>
+            <li>Research/learning: machine learning, data analysis, and coding for civil engineering applications.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="row">
+            <span class="title">Booyong Construction Co., Ltd — QA/QC</span>
+            <span class="meta">Jan 2020 – Oct 2020</span>
+          </div>
+          <ul>
+            <li>Quality control monitoring to ensure compliance with standards.</li>
+            <li>Prepared detailed drawings and as-built documentation.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="row">
+            <span class="title">TF Engineering Co., LTD — Structural Designer</span>
+            <span class="meta">2020 – 2021</span>
+          </div>
+          <ul>
+            <li>Structural design and calculations.</li>
+            <li>Cost, materials, and labor estimation; tender/contract documents.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="row">
+            <span class="title">Viel Sbov Modern Villa — QA/QC Freelancer</span>
+            <span class="meta">2020 – 2022</span>
+          </div>
+          <ul>
+            <li>Method statements for safety protection (external/internal) and structural works.</li>
+            <li>Issued construction drawings; identified and fixed drawing issues for on-time delivery.</li>
+            <li>Solved site problems to keep construction from being blocked.</li>
+            <li>Led daily site progress to meet schedule.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="row">
+            <span class="title">Megabelle — Construction Manager</span>
+            <span class="meta">2021 – 2023</span>
+          </div>
+          <ul>
+            <li>Method statements for pile caps, beams, columns, slabs (technical construction methods).</li>
+            <li>Safety protection planning; drawing issuance and coordination.</li>
+            <li>Daily/weekly/monthly planning to meet contract deadlines.</li>
+            <li>Trained and educated site interns (students).</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="skills" class="grid">
+      <div class="card col-6">
+        <h2>Skills</h2>
+        <div class="tags">
+          <span class="tag">Project Management</span>
+          <span class="tag">Structural Engineering</span>
+          <span class="tag">Construction Management</span>
+          <span class="tag">QA/QC</span>
+          <span class="tag">Cost Estimation</span>
+          <span class="tag">Scheduling</span>
+          <span class="tag">Teamwork</span>
+          <span class="tag">Communication</span>
+          <span class="tag">Time Management</span>
+        </div>
+        <div class="item">
+          <div class="title">Technical</div>
+          <div class="muted">
+            Python • Machine Learning (applied) • Data analysis • Construction drawings & documentation
+          </div>
+        </div>
+      </div>
+
+      <div class="card col-6">
+        <h2>Projects (add yours)</h2>
+        <div class="item">
+          <div class="row">
+            <span class="title">AI for Civil Engineering (Research)</span>
+            <span class="meta">Machine learning / data analysis</span>
+          </div>
+          <div class="muted small">
+            Replace this with 2–4 bullets: what you built, dataset used, results, tools, link.
+          </div>
+        </div>
+        <div class="item">
+          <div class="row">
+            <span class="title">Structural Design Portfolio</span>
+            <span class="meta">Drawings • Calculations • Delivery</span>
+          </div>
+          <div class="muted small">
+            Add 2–3 representative projects (villa, shop house, etc.) and what you were responsible for.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="activities" class="grid">
+      <div class="card col-12">
+        <h2>Teaching & Leadership Activities</h2>
+        <p class="muted">
+          Your CV includes photos showing teaching activities, guiding interns on construction site practices, and leadership activities on site.
+          Add your own images here (replace the placeholders).
+        </p>
+
+        <div class="gallery">
+          <!-- Replace these placeholders with <img> tags if you have image URLs -->
+          <div class="ph">Teaching activities photo<br/><span class="small">(replace with your image)</span></div>
+          <div class="ph">Guiding student interns photo<br/><span class="small">(replace with your image)</span></div>
+          <div class="ph">Leadership on site photo<br/><span class="small">(replace with your image)</span></div>
+        </div>
+
+        <p class="notice">
+          Tip: If you want, I can also generate a second page “Portfolio” (drawings/projects) and connect it in the nav.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact" class="grid">
+      <div class="card col-8">
+        <h2>Contact</h2>
+        <p class="muted">Use the buttons below and edit the details if needed.</p>
+
+        <div class="tags">
+          <a class="tag" href="mailto:kakdarun@gmail.com">Email: kakdarun@gmail.com</a>
+          <a class="tag" href="tel:+85587629663">Phone: +855-87-629-663</a>
+          <span class="tag">Location: Phnom Penh, Cambodia</span>
+        </div>
+
+        <div class="item">
+          <div class="title">Reference (optional to publish)</div>
+          <div class="muted small">
+            You can list your referee publicly, or keep it private and share only when requested.
+            If you publish it: include name, title, and professional email.
+          </div>
+        </div>
+      </div>
+
+      <div class="card col-4">
+        <h2>Download</h2>
+        <p class="muted small">
+          Add a PDF of your CV in this folder and link it here.
+        </p>
+        <a class="btn" href="#" onclick="alert('Add your CV file and update this link.'); return false;">Download CV (PDF)</a>
+
+        <div class="item">
+          <div class="title">Social links</div>
+          <div class="muted small">
+            Add LinkedIn / GitHub / Google Scholar links here.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      © <span id="year"></span> Rath Runkakada • Built with HTML/CSS/JS
+    </div>
+  </main>
+
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Theme toggle (saved in localStorage)
+    const root = document.documentElement;
+    const btn = document.getElementById("themeBtn");
+    const saved = localStorage.getItem("theme");
+    if (saved) root.setAttribute("data-theme", saved);
+
+    btn.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme") || "dark";
+      const next = current === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+    });
+  </script>
+</body>
+</html>
