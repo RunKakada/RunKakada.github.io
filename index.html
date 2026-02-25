@@ -28,6 +28,22 @@
       color: var(--text);
     }
 
+    .downloadBtn{
+      display:inline-block;
+      padding:10px 16px;
+      border-radius:999px;
+      background: var(--accent);
+      color:#fff;
+      font-size:14px;
+      font-weight:600;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+
+    .downloadBtn:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(10,132,255,.25);
+    }
+
     a{ color: inherit; text-decoration: none; }
 
     .topbar{
@@ -299,7 +315,7 @@
         <a href="#about">About</a>
         <a href="#education">Education</a>
         <a href="#skills">Skills</a>
-        <a href="#portfilio">Portfilio</a>
+        <a href="#portfolio">portfolio</a>
       </div>
     </div>
   </div>
@@ -397,11 +413,30 @@
         </p>
       </section>
 
-      <section class="mini" id="portfilio">
-        <h3>Portfilio</h3>
+      <section class="mini" id="portfolio">
+        <h3>portfolio</h3>
         <p>
           Add 3–6 projects with 1–2 lines each. Keep it concise. Link to GitHub where possible.
+        <p style="margin-bottom:12px;">
+          Selected engineering and AI-integrated civil projects.
         </p>
+          
+        <!-- Download Button -->
+        <a href="./Rath_Runkakada_Portfolio.pdf" download class="downloadBtn">
+        Download Full Portfolio (PDF)
+        </a>
+
+        <div style="margin-top:14px;">
+          <p><strong>Structural Design Project</strong><br/>
+          Reinforced concrete residential building design with ETABS analysis.</p>
+
+          <p><strong>Construction Cost Estimation Tool</strong><br/>
+          Python-based quantity takeoff & cost calculation system.</p>
+
+          <p><strong>AI for Site Progress Prediction</strong><br/>
+          Applied machine learning to forecast construction delays.</p>
+        </div>
+        
       </section>
     </div>
 
@@ -415,4 +450,5 @@
   </script>
 </body>
 </html>
+
 
