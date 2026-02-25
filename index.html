@@ -153,12 +153,33 @@
     }
 
     .title{
+      list-style: none;
+      padding-left: 0;
+      margin: 8px 0 16px;
       font-size: 32px;
       line-height: 1.2;
-      margin: 8px 0 16px;
       font-weight: 700;
       letter-spacing: -0.3px;
     }
+    .title li{
+      position: relative;
+      padding-left: 26px;
+      margin-bottom: 6px;
+    }
+    
+    .title li::before{
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      transform: translateY(-50%);
+      box-shadow: 0 0 0 4px rgba(10,132,255,.15);
+    }
+  
     @media (max-width: 640px){
       .title{ font-size: 28px; }
     }
@@ -456,6 +477,7 @@
   </script>
 </body>
 </html>
+
 
 
 
