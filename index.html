@@ -18,6 +18,41 @@
       --max: 1060px;
       --accent: #0a84ff; /* Apple-ish blue */
     }
+    /* Language toggle */
+    .langToggle{
+      display:flex;
+      gap:6px;
+      padding:6px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.6);
+      backdrop-filter: blur(10px);
+      }
+    
+    .langBtn{
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 12px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform .12s ease, background .12s ease, color .12s ease, box-shadow .12s ease;
+    }
+
+    .langBtn:hover{
+      transform: translateY(-1px);
+      background: rgba(17,24,39,.04);
+      color: var(--text);
+    }
+    
+    .langBtn.isActive{
+      background: rgba(10,132,255,.14);
+      color: var(--text);
+      box-shadow: 0 8px 20px rgba(10,132,255,.10);
+    }
+    
 
     * { box-sizing: border-box; }
     html, body { height: 100%; }
@@ -362,6 +397,12 @@
       </a>
 
       <div class="navLinks" aria-label="Sections">
+        
+        <div class="langToggle" role="group" aria-label="Language toggle">
+          <button class="langBtn isActive" type="button" data-lang="en">EN</button>
+          <button class="langBtn" type="button" data-lang="km">KH</button>
+        </div>
+        
         <a href="#about">About</a>
         <a href="#education">Education</a>
         <a href="#skills">Skills</a>
@@ -383,9 +424,9 @@
               <div class="kicker">Rath RunKakada</div>
               
               <ul class="title">
-                <li>Structural Design</li>  
-                <li>Construction</li>
-                <li>Coding</li>
+                <li data-i18n="hero_1">Structural Design</li>
+                <li data-i18n="hero_2">Construction</li>
+                <li data-i18n="hero_3">Coding</li>
               </ul>
 
             </div>
@@ -436,37 +477,38 @@
     <!-- CONTENT -->
     <div class="section miniGrid" style="margin-top:16px">
       <section class="mini" id="about">
-        <h3>About</h3>
-        <p>
+        <h3 data-i18n="about_title">About</h3>
+        
+        <p data-i18n="about_body">
           I'm a Civil Engineer specializing in structural design and construction management.
           Experienced in leading site operations and integrating Coding and AI into civil engineering 
           for smarter solutions!
-          
         </p>
       </section>
 
       <section class="mini" id="education">
-        <h3>Education</h3>
-        <p>
+        <h3 data-i18n="education_title">Education</h3>
+        <p data-i18n="education_body">
           M.Eng — Civil Engineering — (International University)<br/>
           B.Eng — Civil Engineering — (National Technical Training Institute)
         </p>
       </section>
 
       <section class="mini" id="skills">
-        <h3>Skills</h3>
-        <p>
+        <h3 data-i18n="skills_title">Skills</h3>
+        <p data-i18n="skills_body">
           Structural Design • Construction Management • Cost Estimation • QA/QC<br/>
           Python • C++ • Machine Learning (Applied)
         </p>
       </section>
 
       <section class="mini" id="Portfolio">
-        <h3>Portfolio</h3>      
+        <h3 data-i18n="portfolio_title">Portfolio</h3>      
       
           
         <!-- Download Button -->
-        <a href="./Rath_Runkakada_Portfolio.pdf" download class="downloadBtn">
+        <a href="./Rath_Runkakada_Portfolio.pdf" download class="downloadBtn" 
+          data-i18n="portfolio_download">
         Download Full Portfolio (PDF)
         </a>
 
@@ -475,7 +517,7 @@
       </section>
       
       <section class="mini" id="research">
-        <h3>Research Papers</h3>
+        <h3 data-i18n="research_title">Research Papers</h3>
         
         <div class="researchItem">
           <p><strong>R&D1 — Comparative Design of Two-Way Slab Using Coefficient Method</strong></p>
@@ -524,6 +566,7 @@
   </script>
 </body>
 </html>
+
 
 
 
