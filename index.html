@@ -782,13 +782,13 @@
       btn.addEventListener("click", () => applyLang(btn.dataset.lang));
     });
 
-    fetch("https://api.countapi.xyz/hit/rathrun-kakada-portfolio/homepage")
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById("visitorCount").textContent = data.value;
+  fetch("https://countapi.mileshilliard.com/api/v1/hit/rathrun_kakada_portfolio_homepage")
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById("visitorCount").textContent = data.value;
     })
-      .catch(() => {
-        document.getElementById("visitorCount").textContent = "Unavailable";
+    .catch(() => {
+      document.getElementById("visitorCount").textContent = "Unavailable";
     });
 
 
