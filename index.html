@@ -413,6 +413,26 @@
         font-weight: 600;
     }
 
+    .visitor-card{
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(10,132,255,.08);
+      border: 1px solid rgba(10,132,255,.18);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    #visitorCount{
+      margin-top: 4px;
+      font-size: 24px;
+      font-weight: 800;
+      color: #2563eb;
+    }
+
+    
+
   </style>
 </head>
 
@@ -491,6 +511,13 @@
                   
                 </a>
               </div>
+
+              <div class="visitor-card">
+                👁 Portfolio Visitors
+                <div id="visitorCount">Loading...</div>
+              </div>
+
+
               
             </div>
 
@@ -754,6 +781,18 @@
     document.querySelectorAll(".langBtn").forEach(btn => {
       btn.addEventListener("click", () => applyLang(btn.dataset.lang));
     });
+
+    <script>
+    fetch("https://api.countapi.xyz/hit/rathrun-kakada-portfolio/homepage")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("visitorCount").textContent = data.value;
+    })
+      .catch(() => {
+        document.getElementById("visitorCount").textContent = "Unavailable";
+    });
+
+
   </script>
   
 </body>
