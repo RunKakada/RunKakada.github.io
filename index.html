@@ -683,6 +683,14 @@
       }
       #femCanvas{ display:none; }
     }
+    
+    .locationText{
+      line-height: 1.55;
+      word-break: keep-all;
+      overflow-wrap: normal;
+      white-space: normal;
+    }
+    
   </style>
 </head>
 
@@ -733,6 +741,7 @@
             </div>
           </div>
         </div>
+        
       </section>
 
       <!-- RIGHT: CONTACT (TOP RIGHT) -->
@@ -743,7 +752,11 @@
 
             <div class="contactRow">
               <div class="contactMeta">
-                <div class="loc" data-i18n="location">📍 Phnom Penh, Cambodia</div>
+                
+                <div class="loc locationText" data-i18n="location">
+                  📍 Phnom Penh, Cambodia
+                </div>
+                
                 <div class="loc">📧 kakdarun@gmail.com</div>
                 <div class="loc">📱 +855-87-629-663</div>
 
