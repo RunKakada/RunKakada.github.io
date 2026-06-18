@@ -566,6 +566,30 @@
 
     .labLink:hover{ text-decoration: underline; }
 
+    .ciLabLogo{
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      object-fit: contain;
+      flex: 0 0 auto;
+      filter: drop-shadow(0 6px 10px rgba(10,132,255,.18));
+    }
+
+    .ciFallbackLogo{
+      display:none;
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      align-items:center;
+      justify-content:center;
+      flex: 0 0 auto;
+      font-size: 9px;
+      font-weight: 900;
+      color:#0a84ff;
+      background: linear-gradient(135deg, rgba(10,132,255,.16), rgba(16,185,129,.14));
+      border:1px solid rgba(10,132,255,.22);
+    }
+
     .labText{
       color: #2563eb;
       font-weight: 700;
@@ -669,7 +693,7 @@
     <div class="nav">
       <a class="brand" href="#top" aria-label="Home">
         <span class="dot" aria-hidden="true"></span>
-        <span>Personal Background</span>
+        <span data-i18n="top_title">Personal Background</span>
       </a>
 
       <div class="navLinks" aria-label="Sections">
@@ -678,11 +702,11 @@
           <button class="langBtn" type="button" data-lang="km">ខ្មែរ</button>
         </div>
 
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#skills">Skills</a>
-        <a href="#Portfolio">Portfolio</a>
-        <a href="#research">Research</a>
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#education" data-i18n="nav_education">Education</a>
+        <a href="#skills" data-i18n="nav_skills">Skills</a>
+        <a href="#Portfolio" data-i18n="nav_portfolio">Portfolio</a>
+        <a href="#research" data-i18n="nav_research">Research</a>
       </div>
     </div>
   </div>
@@ -901,6 +925,13 @@
     // ===== Language Dictionary =====
     const I18N = {
       en: {
+        top_title: "Personal Background",
+        nav_about: "About",
+        nav_education: "Education",
+        nav_skills: "Skills",
+        nav_portfolio: "Portfolio",
+        nav_research: "Research",
+
         name: "Rathrun Kakada",
         hero_1: "Structural Design",
         hero_2: "Construction",
@@ -939,6 +970,13 @@
       },
 
       km: {
+        top_title: "ប្រវត្តិរូបផ្ទាល់ខ្លួន",
+        nav_about: "អំពីខ្ញុំ",
+        nav_education: "ការសិក្សា",
+        nav_skills: "ជំនាញ",
+        nav_portfolio: "ស្នាដៃ",
+        nav_research: "ស្រាវជ្រាវ",
+
         name: "រ័ត្នរុន កក្កដា",
         hero_1: "គណនាគ្រឿងបង្គុំ",
         hero_2: "បច្ចេកទេសសំណង់",
