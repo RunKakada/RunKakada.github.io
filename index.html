@@ -4,119 +4,124 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Rathrun Kakada</title>
-  <meta name="description" content="Rathrun Kakada — Rathrun Kakada | Structural Design | Construction | Coding" />
+  <meta name="description" content="Rathrun Kakada — Structural Design | Construction | Coding | AI for Civil Engineering" />
 
   <style>
     :root{
-      --bg: #f5f5f7;
-      --surface: #ffffff;
+      --bg: #f5f7fb;
+      --surface: rgba(255,255,255,.82);
       --text: #111827;
       --muted: #6b7280;
       --stroke: rgba(17,24,39,.10);
       --shadow: 0 18px 45px rgba(17,24,39,.08);
       --radius: 22px;
       --max: 1060px;
-      --accent: #0a84ff; /* Apple-ish blue */
+      --accent: #0a84ff;
+      --ai-cyan: #00d4ff;
+      --stress-blue: #2563eb;
+      --stress-green: #22c55e;
+      --stress-yellow: #facc15;
+      --stress-orange: #f97316;
+      --stress-red: #ef4444;
     }
-    /* Language toggle */
-    .langToggle{
-      display:flex;
-      gap:6px;
-      padding:6px;
-      border-radius: 999px;
-      border: 1px solid var(--stroke);
-      background: rgba(255,255,255,.6);
-      backdrop-filter: blur(10px);
-      }
-    
-    .langBtn{
-      border: 0;
-      background: transparent;
-      color: var(--muted);
-      font-weight: 700;
-      font-size: 12px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: transform .12s ease, background .12s ease, color .12s ease, box-shadow .12s ease;
-    }
-
-    .langBtn:hover{
-      transform: translateY(-1px);
-      background: rgba(17,24,39,.04);
-      color: var(--text);
-    }
-    
-    .langBtn.isActive{
-      background: rgba(10,132,255,.14);
-      color: var(--text);
-      box-shadow: 0 8px 20px rgba(10,132,255,.10);
-    }
-    
 
     * { box-sizing: border-box; }
-    html, body { height: 100%; }
+    html { scroll-behavior: smooth; }
+    html, body { min-height: 100%; }
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans";
-      background: var(--bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Khmer OS Battambang", sans-serif;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(0,212,255,.12), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(239,68,68,.10), transparent 28%),
+        radial-gradient(circle at 55% 85%, rgba(34,197,94,.10), transparent 30%),
+        var(--bg);
       color: var(--text);
+      overflow-x: hidden;
     }
 
-    .downloadBtn{
-      display:inline-block;
-      padding:10px 16px;
-      border-radius:999px;
-      background: var(--accent);
-      color:#fff;
-      font-size:14px;
-      font-weight:600;
-      transition: transform .12s ease, box-shadow .12s ease;
+    body::before,
+    body::after{
+      content:"";
+      position: fixed;
+      inset: auto;
+      z-index: -3;
+      width: 360px;
+      height: 360px;
+      border-radius: 999px;
+      filter: blur(34px);
+      opacity: .34;
+      animation: driftBlob 14s ease-in-out infinite alternate;
+      pointer-events: none;
     }
 
-    .downloadBtn:hover{
-    transform: translateY(-1px);
-    box-shadow: 0 8px 20px rgba(10,132,255,.25);
+    body::before{
+      top: 80px;
+      left: -110px;
+      background: radial-gradient(circle, rgba(0,212,255,.38), transparent 68%);
     }
 
-    .viewBtn{
-      display:inline-block;
-      margin-top:8px;
-      padding:8px 16px;
-      border-radius:999px;
-      background: var(--accent);
-      color:#fff;
-      font-size:13px;
-      font-weight:600;
-      transition: transform .12s ease, box-shadow .12s ease;
-    }
-    
-    .viewBtn:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(10,132,255,.25);
+    body::after{
+      right: -120px;
+      bottom: 80px;
+      background: radial-gradient(circle, rgba(249,115,22,.30), transparent 68%);
+      animation-delay: -5s;
     }
 
-    .researchItem p{
-      margin-bottom: 8px;
-    }
-    
-    .researchItem{
-      margin-bottom: 18px;
+    @keyframes driftBlob{
+      from { transform: translate3d(0,0,0) scale(1); }
+      to { transform: translate3d(50px,28px,0) scale(1.08); }
     }
 
-    #software .downloadBtn{
-      margin-top: 18px;
+    #femCanvas{
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      width: 100%;
+      height: 100%;
+      opacity: .78;
+      pointer-events: none;
     }
-    
+
+    .stress-overlay{
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .17;
+      background:
+        linear-gradient(118deg,
+          rgba(37,99,235,.18) 0%,
+          rgba(0,212,255,.15) 22%,
+          rgba(34,197,94,.13) 43%,
+          rgba(250,204,21,.12) 60%,
+          rgba(249,115,22,.14) 77%,
+          rgba(239,68,68,.16) 100%);
+      background-size: 180% 180%;
+      mix-blend-mode: multiply;
+      animation: stressFlow 16s ease-in-out infinite;
+    }
+
+    @keyframes stressFlow{
+      0%,100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
     a{ color: inherit; text-decoration: none; }
 
     .topbar{
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(245,245,247,.72);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--stroke);
+      background: rgba(245,247,251,.72);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(10,132,255,.12);
+      animation: slideDown .7s ease both;
+    }
+
+    @keyframes slideDown{
+      from { transform: translateY(-18px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     .nav{
@@ -133,15 +138,22 @@
       display:flex;
       align-items:center;
       gap:10px;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: -.2px;
     }
+
     .dot{
-      width: 10px;
-      height: 10px;
+      width: 11px;
+      height: 11px;
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, #fff, rgba(10,132,255,.35));
-      box-shadow: 0 0 0 4px rgba(10,132,255,.10);
+      background: radial-gradient(circle at 30% 30%, #fff, rgba(10,132,255,.6));
+      box-shadow: 0 0 0 4px rgba(10,132,255,.10), 0 0 22px rgba(0,212,255,.45);
+      animation: nodePulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes nodePulse{
+      0%,100%{ transform: scale(1); box-shadow: 0 0 0 4px rgba(10,132,255,.10), 0 0 22px rgba(0,212,255,.45); }
+      50%{ transform: scale(1.18); box-shadow: 0 0 0 7px rgba(10,132,255,.08), 0 0 32px rgba(0,212,255,.68); }
     }
 
     .navLinks{
@@ -151,20 +163,63 @@
       color: var(--muted);
       flex-wrap: wrap;
       justify-content: center;
+      align-items: center;
     }
+
     .navLinks a{
       padding: 8px 10px;
       border-radius: 999px;
+      transition: color .18s ease, background .18s ease, box-shadow .18s ease, transform .18s ease;
     }
-    .navLinks a:hover{
+
+    .navLinks a:hover,
+    .navLinks a.isActive{
+      background: rgba(10,132,255,.09);
+      color: var(--text);
+      transform: translateY(-1px);
+      box-shadow: inset 0 0 0 1px rgba(0,212,255,.18);
+    }
+
+    .langToggle{
+      display:flex;
+      gap:6px;
+      padding:6px;
+      border-radius: 999px;
+      border: 1px solid rgba(10,132,255,.14);
+      background: rgba(255,255,255,.62);
+      backdrop-filter: blur(10px);
+      box-shadow: inset 0 0 20px rgba(0,212,255,.04);
+    }
+
+    .langBtn{
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 12px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform .16s ease, background .16s ease, color .16s ease, box-shadow .16s ease;
+    }
+
+    .langBtn:hover{
+      transform: translateY(-1px);
       background: rgba(17,24,39,.04);
       color: var(--text);
+    }
+
+    .langBtn.isActive{
+      background: linear-gradient(135deg, rgba(10,132,255,.18), rgba(0,212,255,.13));
+      color: var(--text);
+      box-shadow: 0 8px 20px rgba(10,132,255,.13);
     }
 
     .wrap{
       max-width: var(--max);
       margin: 0 auto;
       padding: 22px 18px 54px;
+      position: relative;
     }
 
     .grid{
@@ -172,28 +227,81 @@
       grid-template-columns: 1.2fr .8fr;
       gap: 16px;
     }
+
     @media (max-width: 960px){
       .grid{ grid-template-columns: 1fr; }
       .nav{ flex-wrap: wrap; justify-content: center; }
-      .navLinks{ width: 100%; justify-content: center; }
+      .navLinks{ width: 100%; justify-content: center; gap: 10px; }
     }
 
-    .card{
-      background: var(--surface);
-      border: 1px solid var(--stroke);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+    .card,
+    .mini{
+      position: relative;
       overflow: hidden;
+      background: var(--surface);
+      border: 1px solid rgba(17,24,39,.08);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      transform-style: preserve-3d;
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
     }
 
-    .pad{ padding: 22px; }
+    .card{ border-radius: var(--radius); }
+    .mini{ border-radius: 18px; padding: 16px; }
 
-    /* HERO */
+    .card::before,
+    .mini::before{
+      content:"";
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background:
+        linear-gradient(120deg,
+          rgba(37,99,235,.16),
+          rgba(0,212,255,.12),
+          rgba(34,197,94,.10),
+          rgba(250,204,21,.12),
+          rgba(249,115,22,.13),
+          rgba(239,68,68,.16));
+      transition: opacity .28s ease;
+      pointer-events: none;
+    }
+
+    .card::after,
+    .mini::after{
+      content:"";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(60deg, rgba(10,132,255,.055) 1px, transparent 1px),
+        linear-gradient(120deg, rgba(10,132,255,.045) 1px, transparent 1px);
+      background-size: 36px 62px, 36px 62px;
+      opacity: .42;
+      mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent);
+      pointer-events: none;
+      transition: opacity .28s ease, transform .28s ease;
+    }
+
+    .card:hover,
+    .mini:hover{
+      transform: translateY(-5px);
+      border-color: rgba(0,212,255,.30);
+      box-shadow: 0 24px 60px rgba(17,24,39,.12), 0 0 0 1px rgba(0,212,255,.08);
+    }
+
+    .card:hover::before,
+    .mini:hover::before{ opacity: .42; }
+    .card:hover::after,
+    .mini:hover::after{ opacity: .66; transform: translateX(8px); }
+
+    .pad{ padding: 22px; position: relative; z-index: 1; }
+
     .hero{
       display:flex;
       gap: 18px;
       align-items: flex-start;
     }
+
     @media (max-width: 640px){
       .hero{ flex-direction: column; }
     }
@@ -203,34 +311,57 @@
       height: 200px;
       border-radius: 20px;
       object-fit: cover;
-      border: 1px solid rgba(17,24,39,.10);
-      box-shadow: 0 12px 28px rgba(17,24,39,.12);
+      border: 1px solid rgba(10,132,255,.20);
+      box-shadow: 0 12px 28px rgba(17,24,39,.12), 0 0 0 6px rgba(0,212,255,.05);
+      animation: floatProfile 5s ease-in-out infinite;
+      transition: transform .28s ease, box-shadow .28s ease;
     }
 
-    
+    .profile:hover{
+      transform: translateY(-5px) scale(1.018);
+      box-shadow: 0 16px 34px rgba(17,24,39,.14), 0 0 36px rgba(0,212,255,.25);
+    }
+
+    @keyframes floatProfile{
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
 
     .kicker{
       font-size: 13px;
       color: var(--muted);
       letter-spacing: .2px;
       margin-top: 2px;
+      font-weight: 700;
     }
 
     .title{
       list-style: none;
       padding-left: 0;
-      margin: 8px 0 16px;
+      margin: 8px 0 12px;
       font-size: 32px;
       line-height: 1.2;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: -0.3px;
     }
+
     .title li{
       position: relative;
       padding-left: 26px;
       margin-bottom: 6px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: itemLoad .68s ease forwards;
     }
-    
+
+    .title li:nth-child(1){ animation-delay: .15s; }
+    .title li:nth-child(2){ animation-delay: .32s; }
+    .title li:nth-child(3){ animation-delay: .49s; }
+
+    @keyframes itemLoad{
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .title li::before{
       content: "";
       position: absolute;
@@ -241,61 +372,152 @@
       background: var(--accent);
       border-radius: 50%;
       transform: translateY(-50%);
-      box-shadow: 0 0 0 4px rgba(10,132,255,.15);
+      box-shadow: 0 0 0 4px rgba(10,132,255,.15), 0 0 18px rgba(0,212,255,.58);
+      animation: nodePulse 2.4s ease-in-out infinite;
     }
-  
+
+    .analysisLine{
+      color: #2563eb;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 20px;
+    }
+
+    .analysisLine::before{
+      content:"";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 14px rgba(34,197,94,.8);
+      animation: nodePulse 2s ease-in-out infinite;
+    }
+
     @media (max-width: 640px){
       .title{ font-size: 28px; }
     }
 
-    .sub{
-      color: var(--muted);
-      line-height: 1.65;
+    .section{ margin-top: 16px; }
+
+    .miniGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 860px){
+      .miniGrid{ grid-template-columns: 1fr; }
+    }
+
+    .mini h3,
+    .contactTitle{
+      position: relative;
+      margin: 0 0 10px;
+      font-size: 14px;
+      letter-spacing: -.2px;
+      z-index: 1;
+    }
+
+    .mini h3::after,
+    .contactTitle::after{
+      content:"";
+      display:block;
+      width: 46px;
+      height: 3px;
+      border-radius: 99px;
+      margin-top: 7px;
+      background: linear-gradient(90deg, var(--stress-blue), var(--ai-cyan), var(--stress-green), var(--stress-yellow), var(--stress-red));
+      background-size: 220% 100%;
+      animation: stressLine 4s ease-in-out infinite;
+    }
+
+    @keyframes stressLine{
+      0%,100%{ background-position: 0% 50%; }
+      50%{ background-position: 100% 50%; }
+    }
+
+    .mini p{
       margin: 0;
-      font-size: 15px;
-      max-width: 60ch;
-    }
-
-    .chips{
-      display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
-    }
-    .chip{
-      font-size: 13px;
-      color: rgba(17,24,39,.82);
-      background: rgba(17,24,39,.04);
-      border: 1px solid rgba(17,24,39,.08);
-      padding: 8px 10px;
-      border-radius: 999px;
-    }
-
-    /* Right card (Contact) */
-    .sectionTitle{
-      font-size: 13px;
       color: var(--muted);
-      letter-spacing: .3px;
-      margin: 0 0 12px;
+      line-height: 1.6;
+      font-size: 14px;
+      position: relative;
+      z-index: 1;
     }
+
+    .researchItem{
+      position: relative;
+      z-index: 1;
+      margin-bottom: 18px;
+      padding: 10px 10px 12px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      transition: background .22s ease, border-color .22s ease, transform .22s ease;
+    }
+
+    .researchItem:hover{
+      background: rgba(255,255,255,.62);
+      border-color: rgba(10,132,255,.13);
+      transform: translateX(3px);
+    }
+
+    .researchItem p{ margin-bottom: 8px; }
+
+    .downloadBtn,
+    .viewBtn{
+      position: relative;
+      display:inline-block;
+      border-radius:999px;
+      background: linear-gradient(135deg, #0a84ff, #00d4ff);
+      color:#fff;
+      font-weight:700;
+      overflow: hidden;
+      isolation: isolate;
+      transition: transform .16s ease, box-shadow .16s ease;
+      z-index: 1;
+    }
+
+    .downloadBtn{ padding:10px 16px; font-size:14px; }
+    .viewBtn{ margin-top:8px; padding:8px 16px; font-size:13px; }
+    #software .downloadBtn{ margin-top: 18px; }
+
+    .downloadBtn::before,
+    .viewBtn::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.5), transparent);
+      transform: translateX(-120%);
+      transition: transform .6s ease;
+      z-index: -1;
+    }
+
+    .downloadBtn:hover,
+    .viewBtn:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(10,132,255,.25), 0 0 22px rgba(0,212,255,.18);
+    }
+
+    .downloadBtn:hover::before,
+    .viewBtn:hover::before{ transform: translateX(120%); }
 
     .contactRow{
       display:flex;
       align-items:center;
       justify-content: space-between;
       gap: 14px;
+      position: relative;
+      z-index: 1;
     }
 
     .contactMeta{
       display:flex;
       flex-direction: column;
       gap: 6px;
-    }
-
-    .name{
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: -.2px;
     }
 
     .loc{
@@ -314,21 +536,21 @@
       height: 40px;
       border-radius: 999px;
       border: 1px solid rgba(17,24,39,.10);
-      background: rgba(17,24,39,.03);
+      background: rgba(255,255,255,.55);
       display: inline-flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      transition: transform .16s ease, background .16s ease, border-color .16s ease, box-shadow .16s ease;
     }
+
     .iconBtn:hover{
-      transform: translateY(-1px);
-      background: rgba(10,132,255,.08);
-      border-color: rgba(10,132,255,.25);
+      transform: translateY(-2px) scale(1.04);
+      background: rgba(10,132,255,.09);
+      border-color: rgba(0,212,255,.35);
+      box-shadow: 0 10px 22px rgba(10,132,255,.12);
     }
-    .iconBtn:active{
-      transform: translateY(0px);
-    }
+
     .iconBtn svg{
       width: 18px;
       height: 18px;
@@ -336,36 +558,42 @@
       color: rgba(17,24,39,.82);
     }
 
-    /* Sections */
-    .section{
-      margin-top: 16px;
+    .labLink{
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
     }
 
-    .miniGrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    @media (max-width: 860px){
-      .miniGrid{ grid-template-columns: 1fr; }
+    .labLink:hover{ text-decoration: underline; }
+
+    .labText{
+      color: #2563eb;
+      font-weight: 700;
     }
 
-    .mini{
-      background: rgba(17,24,39,.02);
-      border: 1px solid rgba(17,24,39,.08);
-      border-radius: 18px;
-      padding: 16px;
+    .visitor-card{
+      margin-top: 14px;
+      padding: 10px;
+      border-radius: 14px;
+      background:
+        linear-gradient(135deg, rgba(10,132,255,.10), rgba(0,212,255,.07)),
+        rgba(255,255,255,.58);
+      border: 1px solid rgba(10,132,255,.20);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: inset 0 0 24px rgba(0,212,255,.05);
     }
-    .mini h3{
-      margin: 0 0 6px;
-      font-size: 14px;
-      letter-spacing: -.2px;
-    }
-    .mini p{
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 14px;
+
+    #visitorCount{
+      margin-top: 4px;
+      font-size: 16px;
+      font-weight: 900;
+      color: #2563eb;
+      letter-spacing: .2px;
     }
 
     .footer{
@@ -375,7 +603,6 @@
       font-size: 12px;
     }
 
-    /* Accessibility */
     .sr-only{
       position:absolute;
       width:1px;height:1px;
@@ -386,62 +613,58 @@
       border:0;
     }
 
-    .labLink{
-        display: flex;
-        align-items: flex-start;
-        gap: 6px;
+    .reveal{
+      opacity: 0;
+      transform: translateY(18px) scale(.985);
+      transition: opacity .75s ease, transform .75s ease;
     }
 
-    .labLink:hover{
-      text-decoration: underline;
+    .reveal.isVisible{
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
 
-    .mini h3{
-      margin: 0 0 6px;
-      font-size: 14px;
-      letter-spacing: -.2px;
-    }
+    .card.reveal:nth-child(2){ transition-delay: .12s; }
 
-    .contactTitle{
-      margin: 0 0 12px;
-      font-size: 14px;
-      letter-spacing: -.2px;
-    }
-
-        .labText{
-        color: #2563eb;
-        font-weight: 600;
-    }
-
-    .visitor-card{
-      margin-top: 14px;
-      padding: 8px;
-      border-radius: 10px;
-      background: rgba(10,132,255,.08);
-      border: 1px solid rgba(10,132,255,.18);
-      color: var(--text);
-      font-size: 13px;
-      font-weight: 600;
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      
-    }
-
-    #visitorCount{
+    .status-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
       margin-top: 4px;
-      font-size: 14px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 12px;
       font-weight: 800;
       color: #2563eb;
+      background: rgba(10,132,255,.08);
+      border: 1px solid rgba(10,132,255,.13);
     }
 
-    
+    .status-badge::before{
+      content:"";
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      background:#00d4ff;
+      box-shadow:0 0 14px rgba(0,212,255,.7);
+    }
 
+    @media (prefers-reduced-motion: reduce){
+      *, *::before, *::after{
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+      #femCanvas{ display:none; }
+    }
   </style>
 </head>
 
 <body>
+  <canvas id="femCanvas" aria-hidden="true"></canvas>
+  <div class="stress-overlay" aria-hidden="true"></div>
+
   <div class="topbar">
     <div class="nav">
       <a class="brand" href="#top" aria-label="Home">
@@ -450,12 +673,11 @@
       </a>
 
       <div class="navLinks" aria-label="Sections">
-        
         <div class="langToggle" role="group" aria-label="Language toggle">
           <button class="langBtn isActive" type="button" data-lang="en">EN</button>
           <button class="langBtn" type="button" data-lang="km">ខ្មែរ</button>
         </div>
-        
+
         <a href="#about">About</a>
         <a href="#education">Education</a>
         <a href="#skills">Skills</a>
@@ -468,107 +690,103 @@
   <div id="top" class="wrap">
     <div class="grid">
       <!-- LEFT: HERO -->
-      <section class="card">
+      <section class="card reveal">
         <div class="pad">
           <div class="hero">
             <img class="profile" src="./profile2.jpg" alt="Rathrun Kakada" />
 
             <div>
-              <div class="kicker" data-i18n="name">
-                Rathrun Kakada
-              </div>
-              
+              <div class="kicker" data-i18n="name">Rathrun Kakada</div>
+
               <ul class="title">
                 <li data-i18n="hero_1">Structural Design</li>
                 <li data-i18n="hero_2">Construction</li>
                 <li data-i18n="hero_3">Coding</li>
               </ul>
 
+              <div class="analysisLine" id="typingLine">FEM + AI system loading...</div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- RIGHT: CONTACT (TOP RIGHT) -->
-      <aside class="card">
+      <aside class="card reveal">
         <div class="pad">
           <section id="Contact">
-            <h3 class="contactTitle">Contact</h3>
+            <h3 class="contactTitle" data-i18n="contact_title">Contact</h3>
 
-          <div class="contactRow">
-            <div class="contactMeta">
-              <div class="loc">📍 Phnom Penh, Cambodia</div>
-              <div class="loc">📧 kakdarun@gmail.com</div>
-              <div class="loc">📱 +855-87-629-663</div>
-              
-              <div class="loc">
-                <a href="https://ci-lab-sigma.vercel.app/"
-                   target="_blank"
-                   class="labLink">
-                  
-                  <img src="ci-logo.png"
-                        alt="CI Lab Logo"
-                        width="16">
+            <div class="contactRow">
+              <div class="contactMeta">
+                <div class="loc">📍 Phnom Penh, Cambodia</div>
+                <div class="loc">📧 kakdarun@gmail.com</div>
+                <div class="loc">📱 +855-87-629-663</div>
 
-                  <span class="labText">
-                      The Construction Intelligence Lab
-                  </span>
-                  
+                <div class="loc">
+                  <a href="https://ci-lab-sigma.vercel.app/"
+                     target="_blank"
+                     class="labLink">
+                    
+                    <img src="ci-logo.png"
+                         alt="CI Lab Logo"
+                         width="16">
+
+                    <span class="labText">
+                        The Construction Intelligence Lab
+                    </span>
+                    
+                  </a>
+                </div>
+
+                <div class="visitor-card">
+                  👁 <span data-i18n="page_views">Page Views</span>
+                  <div id="visitorCount">Analyzing...</div>
+                </div>
+              </div>
+
+              <div class="iconBar">
+                <!-- Email -->
+                <a class="iconBtn" href="mailto:kakdarun@gmail.com" aria-label="Email">
+                  <span class="sr-only">Email</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+                  </svg>
+                </a>
+
+                <!-- LinkedIn -->
+                <a class="iconBtn" href="https://www.linkedin.com/in/rathrun-kakada168" target="_blank" rel="noopener" aria-label="LinkedIn">
+                  <span class="sr-only">LinkedIn</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.48 1h.02C3.87 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.83v2.12h.05c.53-1 1.82-2.06 3.75-2.06 4 0 4.74 2.63 4.74 6.05v7.41h-4v-6.57c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.49v6.68h-4V7.98z"/>
+                  </svg>
+                </a>
+
+                <!-- GitHub -->
+                <a class="iconBtn" href="https://github.com/RunKakada" target="_blank" rel="noopener" aria-label="GitHub">
+                  <span class="sr-only">GitHub</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 .5C5.73.5.75 5.62.75 12.04c0 5.14 3.44 9.5 8.2 11.04.6.12.82-.27.82-.6 0-.3-.01-1.07-.02-2.1-3.34.75-4.05-1.66-4.05-1.66-.55-1.44-1.35-1.82-1.35-1.82-1.1-.78.08-.76.08-.76 1.22.09 1.86 1.28 1.86 1.28 1.08 1.9 2.83 1.35 3.52 1.03.11-.8.42-1.35.76-1.66-2.67-.31-5.48-1.37-5.48-6.1 0-1.35.46-2.45 1.22-3.31-.12-.31-.53-1.58.12-3.28 0 0 1-.33 3.3 1.26.96-.27 1.98-.4 3-.4 1.02 0 2.04.14 3 .4 2.3-1.59 3.3-1.26 3.3-1.26.65 1.7.24 2.97.12 3.28.76.86 1.22 1.96 1.22 3.31 0 4.74-2.82 5.79-5.5 6.1.43.39.82 1.16.82 2.34 0 1.69-.02 3.05-.02 3.47 0 .33.22.73.83.6 4.75-1.54 8.2-5.9 8.2-11.04C23.25 5.62 18.27.5 12 .5z"/>
+                  </svg>
                 </a>
               </div>
-
-              <div class="visitor-card">
-                👁 Page Views
-                <div id="visitorCount">Loading...</div>
-              </div>
-
-
-              
             </div>
-
-            <div class="iconBar">
-              <!-- Email -->
-              <a class="iconBtn" href="mailto:kakdarun@gmail.com" aria-label="Email">
-                <span class="sr-only">Email</span>
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
-                </svg>
-              </a>
-
-              <!-- LinkedIn -->
-              <a class="iconBtn" href="https://www.linkedin.com/in/rathrun-kakada168" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <span class="sr-only">LinkedIn</span>
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.48 1h.02C3.87 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.83v2.12h.05c.53-1 1.82-2.06 3.75-2.06 4 0 4.74 2.63 4.74 6.05v7.41h-4v-6.57c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.49v6.68h-4V7.98z"/>
-                </svg>
-              </a>
-
-              <!-- GitHub -->
-              <a class="iconBtn" href="https://github.com/RunKakada" target="_blank" rel="noopener" aria-label="GitHub">
-                <span class="sr-only">GitHub</span>
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12 .5C5.73.5.75 5.62.75 12.04c0 5.14 3.44 9.5 8.2 11.04.6.12.82-.27.82-.6 0-.3-.01-1.07-.02-2.1-3.34.75-4.05-1.66-4.05-1.66-.55-1.44-1.35-1.82-1.35-1.82-1.1-.78.08-.76.08-.76 1.22.09 1.86 1.28 1.86 1.28 1.08 1.9 2.83 1.35 3.52 1.03.11-.8.42-1.35.76-1.66-2.67-.31-5.48-1.37-5.48-6.1 0-1.35.46-2.45 1.22-3.31-.12-.31-.53-1.58.12-3.28 0 0 1-.33 3.3 1.26.96-.27 1.98-.4 3-.4 1.02 0 2.04.14 3 .4 2.3-1.59 3.3-1.26 3.3-1.26.65 1.7.24 2.97.12 3.28.76.86 1.22 1.96 1.22 3.31 0 4.74-2.82 5.79-5.5 6.1.43.39.82 1.16.82 2.34 0 1.69-.02 3.05-.02 3.47 0 .33.22.73.83.6 4.75-1.54 8.2-5.9 8.2-11.04C23.25 5.62 18.27.5 12 .5z"/>
-                </svg>
-              </a>
-            </div>
-          </div>
+          </section>
         </div>
       </aside>
     </div>
 
     <!-- CONTENT -->
     <div class="section miniGrid" style="margin-top:16px">
-      <section class="mini" id="about">
+      <section class="mini reveal" id="about">
         <h3 data-i18n="about_title">About</h3>
-        
         <p data-i18n="about_body">
           I'm a Civil Engineer specializing in structural design and construction management.
-          Experienced in leading site operations and integrating Coding and AI into civil engineering 
+          Experienced in leading site operations and integrating Coding and AI into civil engineering
           for smarter solutions!
         </p>
       </section>
 
-      <section class="mini" id="education">
+      <section class="mini reveal" id="education">
         <h3 data-i18n="education_title">Education</h3>
         <p data-i18n="education_body">
           M.Eng — Civil Engineering — (International University)<br/>
@@ -576,7 +794,7 @@
         </p>
       </section>
 
-      <section class="mini" id="skills">
+      <section class="mini reveal" id="skills">
         <h3 data-i18n="skills_title">Skills</h3>
         <p data-i18n="skills_body">
           Structural Design • Construction Management • Cost Estimation • QA/QC<br/>
@@ -584,23 +802,16 @@
         </p>
       </section>
 
-      <section class="mini" id="Portfolio">
-        <h3 data-i18n="portfolio_title">Portfolio</h3>      
-      
-          
-        <!-- Download Button -->
-        <a href="./Rath_Runkakada_Portfolio.pdf" download class="downloadBtn" 
-          data-i18n="portfolio_download">
-        Download Full Portfolio (PDF)
+      <section class="mini reveal" id="Portfolio">
+        <h3 data-i18n="portfolio_title">Portfolio</h3>
+        <a href="./Rath_Runkakada_Portfolio.pdf" download class="downloadBtn" data-i18n="portfolio_download">
+          Download Full Portfolio (PDF)
         </a>
-
-        <div style="margin-top:14px;">
-        
       </section>
-      
-      <section class="mini" id="research">
+
+      <section class="mini reveal" id="research">
         <h3 data-i18n="research_title">Research Papers</h3>
-        
+
         <div class="researchItem">
           <p><strong>R&D1 — Comparative Design of Two-Way Slab Using Coefficient Method</strong></p>
           <a href="./RD1.pdf" target="_blank" class="viewBtn">View PDF</a>
@@ -615,105 +826,67 @@
           <p><strong>R&D3 — Using Python Programming to Develop Quantity Takeoff Software</strong></p>
           <a href="./RD3.pdf" target="_blank" class="viewBtn">View PDF</a>
         </div>
-        
       </section>
 
-      <section class="mini" id="software">
-        <h3>Software Projects</h3>
-      
+      <section class="mini reveal" id="software">
+        <h3 data-i18n="software_title">Software Projects</h3>
+
         <div class="researchItem">
           <p><strong>WAGON Quantity v3.0</strong></p>
           <p data-i18n="software_desc">
             A Mini Software for quantity takeoff and civil engineering calculations:
             Rebar Weight, Stirrups, Concrete & Formwork, RC Structure Quantity and Unit Converter.
           </p>
-      
-          <a href="https://drive.google.com/drive/folders/10FCdvqJ6yVI8M4DGxvCLXcg3WRpa8_wu?usp=sharing"
-             target="_blank"
-             class="downloadBtn">
-             Download WAGON Quantity v3.0
-
+          <a href="https://drive.google.com/drive/folders/10FCdvqJ6yVI8M4DGxvCLXcg3WRpa8_wu?usp=sharing" target="_blank" class="downloadBtn" rel="noopener">
+            Download WAGON Quantity v3.0
           </a>
         </div>
-        
-      <!-- Web Platform -->
+
+        <!-- Web Platform -->
         <div class="researchItem" style="margin-top:22px;">
           <p><strong>WAGON QTY Web</strong></p>
-      
-          <p data-i18n="wagon_web">
-            The platform was transformed from a desktop-based Python Tkinter
-            application into an online engineering web application
+          <p data-i18n="wagon_web_desc">
+            The platform was transformed from a desktop-based Python Tkinter application into an online engineering web application.
           </p>
-      
-          <a href="https://wagon-qty-v4.vercel.app/"
-             target="_blank"
-             class="downloadBtn">
-             Open WAGON QTY Web
+          <a href="https://wagon-qty-v4.vercel.app/" target="_blank" class="downloadBtn" rel="noopener">
+            Open WAGON QTY Web
           </a>
         </div>
 
-      <!-- Construction Report Generator -->
+        <!-- Construction Report Generator -->
         <div class="researchItem" style="margin-top:22px;">
           <p><strong>Construction Report Generator</strong></p>
-      
-          <p data-i18n="wagon_web">
-            Web-based platform developed to simplify construction daily reporting.
-            while automatically generating professional PDF and PNG reports for the project.
+          <p data-i18n="report_generator_desc">
+            Web-based platform developed to simplify construction daily reporting while automatically generating professional PDF and PNG reports for the project.
           </p>
-      
-          <a href="https://ci-report.vercel.app/"
-             target="_blank"
-             class="downloadBtn">
-             Open Construction Report Generator
+          <a href="https://ci-report.vercel.app/" target="_blank" class="downloadBtn" rel="noopener">
+            Open Construction Report Generator
           </a>
         </div>
 
-      <!-- CI-Lab Tool -->
+        <!-- CI-Lab Tool -->
         <div class="researchItem" style="margin-top:22px;">
           <p><strong>Ci-Lab Tool</strong></p>
-      
-          <p data-i18n="wagon_web">
-            The CI-Lab Tool is a structural automation suite (add-in) developing for 
-            Autodesk Revit 2025 using .NET Framework 4.8. Its function including:
-            -Automate Dimension creation for drawing plan
-            -Generate a dashboard of schedule/BOQ
-            
+          <p data-i18n="cilab_tool_desc">
+            The CI-Lab Tool is a structural automation suite (add-in) developing for Autodesk Revit 2025 using .NET Framework 4.8. Its functions include automated dimension creation for drawing plans and dashboard generation for schedule/BOQ.
           </p>
-      
-          <a href="https://ci-lab-sigma.vercel.app/research.html"
-             target="_blank"
-             class="downloadBtn">
-             Coming Soon...!
+          <a href="https://ci-lab-sigma.vercel.app/research.html" target="_blank" class="downloadBtn" rel="noopener">
+            Coming Soon...!
           </a>
-        </div>  
-        
-      
+        </div>
       </section>
 
+      <section class="mini reveal" id="researchInterests">
+        <h3 data-i18n="research_interests_title">Research Interests</h3>
 
-
+        <div class="researchItem">
+          <p><strong>CivilGPT — AI Assistant for Civil Engineering</strong></p>
+          <p data-i18n="civilgpt_desc">
+            Research focuses on Retrieval-Augmented Generation (RAG), Large Language Models (LLMs), Civil Engineering AI, and AI-powered engineering workflows for design and construction.
+          </p>
+          <a href="./CivilGPT_Introduction.HTML" class="viewBtn" data-i18n="click_here">Click Here</a>
+        </div>
       </section>
-      
-      <section class="mini" id="researchInterests">
-  <h3>Research Interests</h3>
-
-  <div class="researchItem">
-    <p>
-      <strong>CivilGPT — AI Assistant for Civil Engineering</strong>
-    </p>
-
-    <p>
-      Research focuses on Retrieval-Augmented Generation (RAG),
-      Large Language Models (LLMs), Civil Engineering AI,
-      and AI-powered engineering workflows for design and construction.
-    </p>
-
-    <a href="./CivilGPT_Introduction.HTML" class="viewBtn">
-      Click Here
-    </a>
-  </div>
-</section>
-     
     </div>
 
     <div class="footer">
@@ -722,143 +895,295 @@
   </div>
 
   <script>
-      // Footer year
+    // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
-  
+
     // ===== Language Dictionary =====
     const I18N = {
       en: {
-
         name: "Rathrun Kakada",
         hero_1: "Structural Design",
         hero_2: "Construction",
         hero_3: "Coding",
-  
+        contact_title: "Contact",
+        page_views: "Page Views",
+
         about_title: "About",
         about_body:
           "I'm a Civil Engineer specializing in structural design and construction management. " +
           "Experienced in leading site operations and integrating Coding and AI into civil engineering for smarter solutions!",
-  
+
         education_title: "Education",
         education_body:
           "M.Eng — Civil Engineering — (International University)<br/>" +
           "B.Eng — Civil Engineering — (National Technical Training Institute)",
-  
+
         skills_title: "Skills",
         skills_body:
           "Structural Design • Construction Management • Cost Estimation • QA/QC<br/>" +
           "Python • C++ • Machine Learning (Applied)",
-  
+
         portfolio_title: "Portfolio",
         portfolio_download: "Download Full Portfolio (PDF)",
-  
+
         research_title: "Research Papers",
-        software_desc: "A Mini Software for quantity takeoff and civil engineering calculations: Rebar Weight, Stirrups, Concrete & Formwork, and Unit Converter.",
+        software_title: "Software Projects",
+        software_desc: "A Mini Software for quantity takeoff and civil engineering calculations: Rebar Weight, Stirrups, Concrete & Formwork, RC Structure Quantity and Unit Converter.",
+        wagon_web_desc: "The platform was transformed from a desktop-based Python Tkinter application into an online engineering web application.",
+        report_generator_desc: "Web-based platform developed to simplify construction daily reporting while automatically generating professional PDF and PNG reports for the project.",
+        cilab_tool_desc: "The CI-Lab Tool is a structural automation suite (add-in) developing for Autodesk Revit 2025 using .NET Framework 4.8. Its functions include automated dimension creation for drawing plans and dashboard generation for schedule/BOQ.",
 
-
-        wagon_web: "The platform was transformed from a desktop-based Python Tkinter application into an online engineering web application"
-        
+        research_interests_title: "Research Interests",
+        civilgpt_desc: "Research focuses on Retrieval-Augmented Generation (RAG), Large Language Models (LLMs), Civil Engineering AI, and AI-powered engineering workflows for design and construction.",
+        click_here: "Click Here"
       },
-  
-      km: {
 
+      km: {
         name: "រ័ត្នរុន កក្កដា",
         hero_1: "គណនាគ្រឿងបង្គុំ",
         hero_2: "បច្ចេកទេសសំណង់",
         hero_3: "សរសេរកូដ",
-  
+        contact_title: "ទំនាក់ទំនង",
+        page_views: "ចំនួនអ្នកចូលមើល",
+
         about_title: "អំពីខ្ញុំ",
         about_body:
           "ខ្ញុំជាវិស្វករស៊ីវិល ឯកទេសក្នុងការគណនាសំណង់ និងការគ្រប់គ្រងការសាងសង់។ " +
           "មានបទពិសោធន៍ដឹកនាំការងារនៅការដ្ឋាន និងបញ្ចូលការសរសេរកូដ និង AI ទៅក្នុងវិស្វកម្មស៊ីវិល ដើម្បីដោះស្រាយបញ្ហាកាន់តែឆ្លាតវៃ!",
-  
+
         education_title: "ការសិក្សា",
         education_body:
           "អនុបណ្ឌិត — វិស្វកម្មស៊ីវិល — (សកលវិទ្យាល័យអន្តរជាតិ)<br/>" +
           "បរិញ្ញាបត្រ — វិស្វកម្មស៊ីវិល — (វិទ្យាស្ថានជាតិបណ្តុះបណ្តាលបច្ចេកទេសវិជ្ជាជីវៈ)",
-  
+
         skills_title: "ជំនាញ",
         skills_body:
-          "គណនាគ្រឿងបង្គុំ • គ្រប់គ្រងការសាងសង់ • ប៉ាន់ប្រមាណតម្លៃ • គ្រប់់គ្រងគុណភាព<br/>" +
+          "គណនាគ្រឿងបង្គុំ • គ្រប់គ្រងការសាងសង់ • ប៉ាន់ប្រមាណតម្លៃ • QA/QC<br/>" +
           "Python • C++ • Machine Learning (Applied)",
-  
+
         portfolio_title: "ស្នាដៃ",
         portfolio_download: "ទាញយកស្នាដៃទាំងមូល (PDF)",
-  
-        research_title: "អត្ថបទស្រាវជ្រាវ",
-        software_desc: "កម្មវិធីសម្រាប់គណនាបរិមាណសម្ភារៈសំណង់រួមមាន៖ ទម្ងន់ដែក, ដែកកង, បេតុង និងក្តារពុម្ព, និងអាចបម្លែកខ្នាតផងដែរ។",
 
-        wagon_web: "វេបសាយដែលបំលែងចេញពីកម្មវិធី WAGON Quantity v3.0 សម្រាប់គណនាបរិមាណសម្ភារៈ ដូចជា ដែក បេតុង ក្តារពុម្ព ការលាយបេតុង និងបំលែងខ្នាត"
-        
+        research_title: "អត្ថបទស្រាវជ្រាវ",
+        software_title: "គម្រោងកម្មវិធី",
+        software_desc: "កម្មវិធីសម្រាប់គណនាបរិមាណសម្ភារៈសំណង់រួមមាន៖ ទម្ងន់ដែក, ដែកកង, បេតុង និងក្តារពុម្ព, បរិមាណគ្រឿងបង្គុំ RC និងបំលែងខ្នាត។",
+        wagon_web_desc: "វេបសាយដែលបំលែងចេញពីកម្មវិធី Python Tkinter ទៅជាកម្មវិធីវិស្វកម្មលើអ៊ីនធឺណិត។",
+        report_generator_desc: "វេបសាយសម្រាប់បង្កើតរបាយការណ៍ការដ្ឋានប្រចាំថ្ងៃ ហើយអាចបង្កើតរបាយការណ៍ជា PDF និង PNG ដោយស្វ័យប្រវត្តិ។",
+        cilab_tool_desc: "CI-Lab Tool គឺជា add-in សម្រាប់ Autodesk Revit 2025 ដោយប្រើ .NET Framework 4.8 សម្រាប់បង្កើត dimension ដោយស្វ័យប្រវត្តិ និងបង្កើត dashboard សម្រាប់ schedule/BOQ។",
+
+        research_interests_title: "ចំណាប់អារម្មណ៍ស្រាវជ្រាវ",
+        civilgpt_desc: "ការស្រាវជ្រាវផ្តោតលើ RAG, LLMs, AI ក្នុងវិស្វកម្មស៊ីវិល និង workflow វិស្វកម្មដែលជួយដោយ AI សម្រាប់ការរចនា និងការសាងសង់។",
+        click_here: "ចុចទីនេះ"
       }
     };
-  
+
     // Keys that include <br/> and must keep HTML formatting
     const HTML_KEYS = new Set(["education_body", "skills_body"]);
-  
+
     function applyLang(lang) {
       document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
         const value = I18N?.[lang]?.[key];
         if (!value) return;
-  
         if (HTML_KEYS.has(key)) el.innerHTML = value;
         else el.textContent = value;
       });
-  
+
       document.querySelectorAll(".langBtn").forEach(btn => {
         btn.classList.toggle("isActive", btn.dataset.lang === lang);
       });
-  
+
       localStorage.setItem("site_lang", lang);
       document.documentElement.setAttribute("lang", lang === "km" ? "km" : "en");
     }
-  
-    // Initialize
+
+    // Initialize language
     const saved = localStorage.getItem("site_lang") || "en";
     applyLang(saved);
-  
-    // Button click handlers
+
     document.querySelectorAll(".langBtn").forEach(btn => {
       btn.addEventListener("click", () => applyLang(btn.dataset.lang));
     });
 
-  fetch("https://countapi.mileshilliard.com/api/v1/hit/rathrun_kakada_portfolio_homepage")
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById("visitorCount").textContent = data.value;
-    })
-    .catch(() => {
-      document.getElementById("visitorCount").textContent = "Unavailable";
-    });
+    // Scroll reveal animation
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("isVisible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
 
+    document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
 
+    // Active navbar highlight
+    const navLinks = Array.from(document.querySelectorAll(".navLinks a[href^='#']"));
+    const sectionMap = navLinks
+      .map(link => document.querySelector(link.getAttribute("href")))
+      .filter(Boolean);
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach(link => {
+          link.classList.toggle("isActive", link.getAttribute("href") === `#${entry.target.id}`);
+        });
+      });
+    }, { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 });
+
+    sectionMap.forEach(section => sectionObserver.observe(section));
+
+    // Dynamic typing line: FEM + AI concept
+    const typingLine = document.getElementById("typingLine");
+    const typingTexts = [
+      "FEM mesh analysis × AI workflow",
+      "Stress diagram thinking for civil systems",
+      "Structural design + construction intelligence",
+      "Building AI-powered engineering tools"
+    ];
+
+    let typingIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function typeLoop(){
+      const current = typingTexts[typingIndex];
+      if (!deleting) {
+        charIndex++;
+        typingLine.textContent = current.slice(0, charIndex);
+        if (charIndex === current.length) {
+          deleting = true;
+          setTimeout(typeLoop, 1500);
+          return;
+        }
+      } else {
+        charIndex--;
+        typingLine.textContent = current.slice(0, charIndex);
+        if (charIndex === 0) {
+          deleting = false;
+          typingIndex = (typingIndex + 1) % typingTexts.length;
+        }
+      }
+      setTimeout(typeLoop, deleting ? 36 : 54);
+    }
+    typeLoop();
+
+    // Animated visitor counter
+    function animateCount(target){
+      const el = document.getElementById("visitorCount");
+      const end = Number(target) || 0;
+      const duration = 1200;
+      const startTime = performance.now();
+
+      function update(now){
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * end).toLocaleString();
+        if (progress < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+    }
+
+    fetch("https://countapi.mileshilliard.com/api/v1/hit/rathrun_kakada_portfolio_homepage")
+      .then(response => response.json())
+      .then(data => animateCount(data.value))
+      .catch(() => {
+        document.getElementById("visitorCount").textContent = "Unavailable";
+      });
+
+    // FEM mesh + AI node animated background
+    const canvas = document.getElementById("femCanvas");
+    const ctx = canvas.getContext("2d");
+    let width, height, nodes;
+    const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function resizeCanvas(){
+      const dpr = window.devicePixelRatio || 1;
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      createNodes();
+    }
+
+    function createNodes(){
+      const spacing = width < 700 ? 92 : 118;
+      nodes = [];
+      for (let y = -spacing; y < height + spacing; y += spacing) {
+        for (let x = -spacing; x < width + spacing; x += spacing) {
+          nodes.push({
+            x: x + Math.random() * 28,
+            y: y + Math.random() * 28,
+            ox: x,
+            oy: y,
+            vx: (Math.random() - .5) * .16,
+            vy: (Math.random() - .5) * .16,
+            phase: Math.random() * Math.PI * 2,
+            stress: Math.random()
+          });
+        }
+      }
+    }
+
+    function stressColor(t, alpha){
+      if (t < .25) return `rgba(37,99,235,${alpha})`;
+      if (t < .45) return `rgba(0,212,255,${alpha})`;
+      if (t < .62) return `rgba(34,197,94,${alpha})`;
+      if (t < .78) return `rgba(250,204,21,${alpha})`;
+      if (t < .9) return `rgba(249,115,22,${alpha})`;
+      return `rgba(239,68,68,${alpha})`;
+    }
+
+    function drawFemMesh(time){
+      ctx.clearRect(0, 0, width, height);
+
+      nodes.forEach(n => {
+        n.x += n.vx + Math.sin(time * .001 + n.phase) * .018;
+        n.y += n.vy + Math.cos(time * .001 + n.phase) * .018;
+
+        if (Math.abs(n.x - n.ox) > 34) n.vx *= -1;
+        if (Math.abs(n.y - n.oy) > 34) n.vy *= -1;
+      });
+
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i];
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 145) {
+            const alpha = (1 - dist / 145) * .18;
+            const stress = (a.stress + b.stress + Math.sin(time * .0007 + i) * .18) / 2;
+            ctx.strokeStyle = stressColor(Math.max(0, Math.min(1, stress)), alpha);
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      nodes.forEach((n, index) => {
+        const pulse = (Math.sin(time * .003 + n.phase) + 1) / 2;
+        const radius = 1.3 + pulse * 1.3;
+        ctx.fillStyle = index % 7 === 0 ? stressColor(n.stress, .42) : `rgba(10,132,255,${.18 + pulse * .12})`;
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      if (!isReduced) requestAnimationFrame(drawFemMesh);
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+    if (!isReduced) requestAnimationFrame(drawFemMesh);
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
